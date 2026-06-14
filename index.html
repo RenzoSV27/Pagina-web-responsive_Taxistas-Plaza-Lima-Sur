@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon" aria-hidden="true">🚖</span>
+            <span class="logo-text">Taxi Plaza <strong>Lima Sur</strong></span>
+        </div>
+
+        <div class="nav-buttons">
+            <button type="button" class="btn-login">Iniciar sesión</button>
+            <button type="button" class="btn-register">Registrarse</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+
+        <div class="hero-text">
+            <span class="hero-badge">Panel del conductor</span>
+            <h1>Gestiona tus servicios de taxi de forma rápida y segura</h1>
+            <p>
+                Recibe solicitudes de entrega, acepta servicios con un solo toque
+                y mantén un historial completo de tus viajes.
+            </p>
+            <button type="button" class="btn-primary">Ver solicitudes</button>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+            <div class="hero-card-float">
+                <span class="hero-emoji">🚕</span>
+                <p>Nuevo servicio cerca</p>
+                <strong>Matellini · 2 min</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard" aria-label="Resumen del día">
+        <div class="card stats stats--blue">
+            <span class="stats-icon" aria-hidden="true">📋</span>
+            <h3>Servicios hoy</h3>
+            <span class="stats-value">12</span>
+        </div>
+
+        <div class="card stats stats--green">
+            <span class="stats-icon" aria-hidden="true">✅</span>
+            <h3>Completados</h3>
+            <span class="stats-value">9</span>
+        </div>
+
+        <div class="card stats stats--amber">
+            <span class="stats-icon" aria-hidden="true">💰</span>
+            <h3>Ganancias</h3>
+            <span class="stats-value">S/ 145</span>
+        </div>
+
+        <div class="card stats stats--status">
+            <span class="stats-icon" aria-hidden="true">🟢</span>
+            <h3>Estado</h3>
+            <span class="stats-value stats-value--badge">Disponible</span>
+        </div>
+    </section>
+
+    <main>
+
+        <section class="solicitudes">
+            <header class="section-header">
+                <h2>Solicitudes disponibles</h2>
+                <p>3 servicios pendientes en tu zona</p>
+            </header>
+
+            <div class="cards-grid">
+                <article class="request-card">
+                    <div class="request-card-top">
+                        <h3>Ripley</h3>
+                        <span class="request-tag">Entrega</span>
+                    </div>
+                    <ul class="request-meta">
+                        <li><span aria-hidden="true">📍</span> Matellini - Chorrillos</li>
+                        <li><span aria-hidden="true">📦</span> Televisor 55"</li>
+                    </ul>
+                    <div class="price">S/ 15.00</div>
+                    <button type="button" class="btn-accept">Aceptar servicio</button>
+                </article>
+
+                <article class="request-card request-card--featured">
+                    <div class="request-card-top">
+                        <h3>Saga Falabella</h3>
+                        <span class="request-tag request-tag--hot">Prioridad</span>
+                    </div>
+                    <ul class="request-meta">
+                        <li><span aria-hidden="true">📍</span> Surco</li>
+                        <li><span aria-hidden="true">📦</span> Horno microondas</li>
+                    </ul>
+                    <div class="price">S/ 18.00</div>
+                    <button type="button" class="btn-accept">Aceptar servicio</button>
+                </article>
+
+                <article class="request-card">
+                    <div class="request-card-top">
+                        <h3>Promart</h3>
+                        <span class="request-tag">Entrega</span>
+                    </div>
+                    <ul class="request-meta">
+                        <li><span aria-hidden="true">📍</span> Barranco</li>
+                        <li><span aria-hidden="true">📦</span> Herramientas</li>
+                    </ul>
+                    <div class="price">S/ 20.00</div>
+                    <button type="button" class="btn-accept">Aceptar servicio</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="acciones">
+            <header class="section-header">
+                <h2>Acciones del servicio</h2>
+                <p>Disponibles al aceptar un viaje</p>
+            </header>
+
+            <div class="actions-grid">
+                <button type="button" class="action-btn" disabled>
+                    <span class="action-icon" aria-hidden="true">📍</span>
+                    <span>Cómo llegar</span>
+                </button>
+                <button type="button" class="action-btn" disabled>
+                    <span class="action-icon" aria-hidden="true">📦</span>
+                    <span>Confirmar recogida</span>
+                </button>
+                <button type="button" class="action-btn" disabled>
+                    <span class="action-icon" aria-hidden="true">✅</span>
+                    <span>Confirmar entrega</span>
+                </button>
+                <button type="button" class="action-btn" disabled>
+                    <span class="action-icon" aria-hidden="true">🌙</span>
+                    <span>Modo alto contraste</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="historial">
+            <header class="section-header">
+                <h2>Historial de servicios</h2>
+                <p>Últimos viajes registrados</p>
+            </header>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Destino</th>
+                            <th>Tarifa</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Fecha">02/06/2026</td>
+                            <td data-label="Destino">Surco</td>
+                            <td data-label="Tarifa">S/ 18</td>
+                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fecha">01/06/2026</td>
+                            <td data-label="Destino">Barranco</td>
+                            <td data-label="Tarifa">S/ 20</td>
+                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Fecha">31/05/2026</td>
+                            <td data-label="Destino">Chorrillos</td>
+                            <td data-label="Tarifa">S/ 15</td>
+                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>© 2026 Taxi Plaza Lima Sur · Prototipo IHC</p>
+    </footer>
+
+    <div class="accessibility-container">
+        <button
+            type="button"
+            class="accessibility-btn"
+            aria-label="Opciones de accesibilidad"
+            aria-expanded="false"
+            aria-controls="panel-accesibilidad">
+            ♿
+        </button>
+
+        <div
+            id="panel-accesibilidad"
+            class="accessibility-panel"
+            role="region"
+            aria-label="Panel de accesibilidad"
+            hidden>
+            <h3>Accesibilidad</h3>
+
+            <label>
+                <input type="checkbox" id="alto-contraste">
+                Alto contraste
+            </label>
+            <label>
+                <input type="checkbox" id="texto-grande">
+                Texto grande
+            </label>
+            <label>
+                <input type="checkbox" disabled>
+                Compatibilidad con lector de pantalla
+            </label>
+            <label>
+                <input type="checkbox" disabled>
+                Navegación por voz
+            </label>
+            <label>
+                <input type="checkbox" disabled>
+                Vibración para notificaciones
+            </label>
+            <label>
+                <input type="checkbox" disabled>
+                Reducir animaciones
+            </label>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
