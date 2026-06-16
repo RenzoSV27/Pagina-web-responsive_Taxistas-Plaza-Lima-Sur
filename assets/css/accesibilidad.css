@@ -1,0 +1,174 @@
+.contenedor-accesibilidad {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+}
+
+.boton-accesibilidad {
+    width: 3.5rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), #3b82f6);
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.boton-accesibilidad:hover {
+    transform: scale(1.06);
+    box-shadow: var(--shadow-lg);
+}
+
+.panel-accesibilidad {
+    position: absolute;
+    bottom: calc(100% + 0.75rem);
+    right: 0;
+    width: min(280px, calc(100vw - 2rem));
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    display: none;
+}
+
+.contenedor-accesibilidad.abierto .panel-accesibilidad {
+    display: block;
+}
+
+.panel-accesibilidad h3 {
+    margin-bottom: 1rem;
+    color: var(--color-primary-dark);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.panel-accesibilidad label {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.panel-accesibilidad input {
+    width: 1.1rem;
+    height: 1.1rem;
+    accent-color: var(--color-primary);
+}
+
+html.texto-grande {
+    font-size: 125%;
+}
+
+html.alto-contraste {
+    --color-bg: #000000;
+    --color-surface: #000000;
+    --color-text: #ffffff;
+    --color-text-muted: #ffffff;
+    --color-primary: #ffff00;
+    --color-primary-dark: #ffff00;
+    --color-accent: #ffff00;
+    --color-success: #00ff00;
+    --color-success-light: #000000;
+    --color-danger: #ff4444;
+    --color-danger-light: #000000;
+    --color-navy: #000000;
+    --color-sidebar: #000000;
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+}
+
+html.alto-contraste body {
+    background: #000000;
+    color: #ffffff;
+}
+
+html.alto-contraste .barra-navegacion,
+html.alto-contraste .sidebar {
+    background: #000000;
+    border-color: #ffffff;
+}
+
+html.alto-contraste .logo-texto strong {
+    color: #ffff00;
+}
+
+html.alto-contraste .boton-nav-login {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+html.alto-contraste .boton-nav-registro,
+html.alto-contraste .boton-primario,
+html.alto-contraste .boton-exito,
+html.alto-contraste .boton-aceptar,
+html.alto-contraste .boton-accesibilidad,
+html.alto-contraste .boton-hero-primario {
+    background: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff;
+    box-shadow: none !important;
+}
+
+html.alto-contraste .hero-fondo {
+    background: #000000 !important;
+}
+
+html.alto-contraste .tarjeta,
+html.alto-contraste .tarjeta-servicio,
+html.alto-contraste .contenedor-tabla,
+html.alto-contraste .panel-accesibilidad,
+html.alto-contraste .pie-sitio,
+html.alto-contraste .barra-progreso,
+html.alto-contraste .item-notificacion,
+html.alto-contraste .item-faq {
+    background: #000000 !important;
+    border: 2px solid #ffffff !important;
+    box-shadow: none !important;
+    color: #ffffff;
+}
+
+html.alto-contraste .encabezado-seccion h1,
+html.alto-contraste .encabezado-seccion h2,
+html.alto-contraste .estadistica-valor,
+html.alto-contraste .tarifa {
+    color: #ffff00 !important;
+}
+
+html.alto-contraste .pildora-estado--completado {
+    background: #000000;
+    color: #00ff00 !important;
+    border: 2px solid #00ff00;
+}
+
+html.alto-contraste .tabla-datos thead {
+    background: #000000 !important;
+    border-bottom: 2px solid #ffff00;
+}
+
+html.alto-contraste .tabla-datos th,
+html.alto-contraste .tabla-datos td {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+html.alto-contraste button:focus-visible,
+html.alto-contraste input:focus-visible {
+    outline: 3px solid #ffff00;
+    outline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+    .contenedor-accesibilidad {
+        bottom: 1rem;
+        right: 1rem;
+    }
+}

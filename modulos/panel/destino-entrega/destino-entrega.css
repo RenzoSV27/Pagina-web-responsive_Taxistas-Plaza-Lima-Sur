@@ -1,0 +1,8 @@
+/* Estilos específicos del destino de entrega */
+
+.direccion-destacada {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin: 0.75rem 0 1rem;
+}

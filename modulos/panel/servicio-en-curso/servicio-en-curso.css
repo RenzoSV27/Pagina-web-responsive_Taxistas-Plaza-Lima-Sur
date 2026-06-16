@@ -1,0 +1,29 @@
+/* Estilos específicos de servicio en curso */
+
+.temporizador-servicio {
+    text-align: center;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.temporizador-etiqueta {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.temporizador-valor {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.mapa-placeholder {
+    margin-bottom: 1.5rem;
+}

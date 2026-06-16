@@ -8,238 +8,108 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/componentes.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/accesibilidad.css">
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
+<body data-ruta-raiz="">
 
-    <header class="navbar">
-        <div class="logo">
-            <span class="logo-icon" aria-hidden="true">🚖</span>
-            <span class="logo-text">Taxi Plaza <strong>Lima Sur</strong></span>
-        </div>
-
-        <div class="nav-buttons">
-            <button type="button" class="btn-login">Iniciar sesión</button>
-            <button type="button" class="btn-register">Registrarse</button>
-        </div>
+    <header class="barra-navegacion">
+        <a href="index.html" class="logo">
+            <span class="logo-icono" aria-hidden="true">🚖</span>
+            <span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span>
+        </a>
+        <nav class="nav-botones">
+            <a href="modulos/autenticacion/inicio-sesion/inicio-sesion.html" class="boton-nav-login">Iniciar sesión</a>
+            <a href="modulos/autenticacion/registro/registro.html" class="boton-nav-registro">Registrarse</a>
+            <a href="modulos/panel/dashboard/dashboard.html" class="boton-nav-registro" id="btn-ir-panel" hidden>Ir al panel</a>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-
-        <div class="hero-text">
-            <span class="hero-badge">Panel del conductor</span>
-            <h1>Gestiona tus servicios de taxi de forma rápida y segura</h1>
+    <section class="seccion-hero">
+        <div class="hero-fondo" aria-hidden="true"></div>
+        <div class="hero-contenido">
+            <span class="insignia-hero">Plataforma para taxistas</span>
+            <h1>Gestiona tus servicios de entrega de forma rápida y segura</h1>
             <p>
-                Recibe solicitudes de entrega, acepta servicios con un solo toque
-                y mantén un historial completo de tus viajes.
+                Recibe solicitudes, acepta servicios con un solo toque,
+                sigue cada etapa del viaje y lleva un historial completo de tus ganancias.
             </p>
-            <button type="button" class="btn-primary">Ver solicitudes</button>
+            <div class="hero-botones">
+                <a href="modulos/autenticacion/registro/registro.html" class="boton-hero-primario">Comenzar gratis</a>
+                <a href="modulos/autenticacion/inicio-sesion/inicio-sesion.html" class="boton-hero-secundario">Ya tengo cuenta</a>
+            </div>
         </div>
-
         <div class="hero-visual" aria-hidden="true">
-            <div class="hero-card-float">
-                <span class="hero-emoji">🚕</span>
-                <p>Nuevo servicio cerca</p>
-                <strong>Matellini · 2 min</strong>
+            <div class="tarjeta-hero-flotante">
+                <span style="font-size:4rem;display:block;margin-bottom:0.5rem">🚕</span>
+                <p style="opacity:0.75;margin-bottom:0.25rem">Nuevo servicio cerca</p>
+                <strong style="color:var(--color-accent)">Matellini · 2 min</strong>
             </div>
         </div>
     </section>
 
-    <section class="dashboard" aria-label="Resumen del día">
-        <div class="card stats stats--blue">
-            <span class="stats-icon" aria-hidden="true">📋</span>
-            <h3>Servicios hoy</h3>
-            <span class="stats-value">12</span>
-        </div>
-
-        <div class="card stats stats--green">
-            <span class="stats-icon" aria-hidden="true">✅</span>
-            <h3>Completados</h3>
-            <span class="stats-value">9</span>
-        </div>
-
-        <div class="card stats stats--amber">
-            <span class="stats-icon" aria-hidden="true">💰</span>
-            <h3>Ganancias</h3>
-            <span class="stats-value">S/ 145</span>
-        </div>
-
-        <div class="card stats stats--status">
-            <span class="stats-icon" aria-hidden="true">🟢</span>
-            <h3>Estado</h3>
-            <span class="stats-value stats-value--badge">Disponible</span>
+    <section class="seccion-beneficios">
+        <h2>¿Por qué unirte a Taxi Plaza Lima Sur?</h2>
+        <div class="rejilla-beneficios">
+            <article class="tarjeta tarjeta-beneficio">
+                <span aria-hidden="true">📱</span>
+                <h3>Solicitudes en tiempo real</h3>
+                <p>Recibe alertas de servicios disponibles en tu zona al instante.</p>
+            </article>
+            <article class="tarjeta tarjeta-beneficio">
+                <span aria-hidden="true">🗺️</span>
+                <h3>Flujo guiado paso a paso</h3>
+                <p>Desde la recogida hasta la entrega, cada etapa está claramente definida.</p>
+            </article>
+            <article class="tarjeta tarjeta-beneficio">
+                <span aria-hidden="true">💰</span>
+                <h3>Control de ganancias</h3>
+                <p>Consulta tus ingresos diarios, semanales y el historial de pagos.</p>
+            </article>
+            <article class="tarjeta tarjeta-beneficio">
+                <span aria-hidden="true">♿</span>
+                <h3>Accesible para todos</h3>
+                <p>Alto contraste, texto grande y diseño responsive para cualquier dispositivo.</p>
+            </article>
         </div>
     </section>
 
-    <main>
+    <section class="seccion-cta">
+        <h2>¿Listo para empezar?</h2>
+        <p>Únete a la red de taxistas de Lima Sur y comienza a recibir servicios hoy.</p>
+        <a href="modulos/autenticacion/registro/registro.html" class="boton-hero-primario">Registrarme como taxista</a>
+    </section>
 
-        <section class="solicitudes">
-            <header class="section-header">
-                <h2>Solicitudes disponibles</h2>
-                <p>3 servicios pendientes en tu zona</p>
-            </header>
-
-            <div class="cards-grid">
-                <article class="request-card">
-                    <div class="request-card-top">
-                        <h3>Ripley</h3>
-                        <span class="request-tag">Entrega</span>
-                    </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Matellini - Chorrillos</li>
-                        <li><span aria-hidden="true">📦</span> Televisor 55"</li>
-                    </ul>
-                    <div class="price">S/ 15.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
-
-                <article class="request-card request-card--featured">
-                    <div class="request-card-top">
-                        <h3>Saga Falabella</h3>
-                        <span class="request-tag request-tag--hot">Prioridad</span>
-                    </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Surco</li>
-                        <li><span aria-hidden="true">📦</span> Horno microondas</li>
-                    </ul>
-                    <div class="price">S/ 18.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
-
-                <article class="request-card">
-                    <div class="request-card-top">
-                        <h3>Promart</h3>
-                        <span class="request-tag">Entrega</span>
-                    </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Barranco</li>
-                        <li><span aria-hidden="true">📦</span> Herramientas</li>
-                    </ul>
-                    <div class="price">S/ 20.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
-            </div>
-        </section>
-
-        <section class="acciones">
-            <header class="section-header">
-                <h2>Acciones del servicio</h2>
-                <p>Disponibles al aceptar un viaje</p>
-            </header>
-
-            <div class="actions-grid">
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">📍</span>
-                    <span>Cómo llegar</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">📦</span>
-                    <span>Confirmar recogida</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">✅</span>
-                    <span>Confirmar entrega</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">🌙</span>
-                    <span>Modo alto contraste</span>
-                </button>
-            </div>
-        </section>
-
-        <section class="historial">
-            <header class="section-header">
-                <h2>Historial de servicios</h2>
-                <p>Últimos viajes registrados</p>
-            </header>
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Destino</th>
-                            <th>Tarifa</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Fecha">02/06/2026</td>
-                            <td data-label="Destino">Surco</td>
-                            <td data-label="Tarifa">S/ 18</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Fecha">01/06/2026</td>
-                            <td data-label="Destino">Barranco</td>
-                            <td data-label="Tarifa">S/ 20</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Fecha">31/05/2026</td>
-                            <td data-label="Destino">Chorrillos</td>
-                            <td data-label="Tarifa">S/ 15</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
+    <footer class="pie-sitio">
         <p>© 2026 Taxi Plaza Lima Sur · Prototipo IHC</p>
+        <p>
+            <a href="modulos/legal/terminos-condiciones/terminos-condiciones.html">Términos</a>
+            <a href="modulos/legal/politica-privacidad/politica-privacidad.html">Privacidad</a>
+            <a href="modulos/ayuda/centro-ayuda/centro-ayuda.html">Ayuda</a>
+            <a href="modulos/ayuda/soporte-contacto/soporte-contacto.html">Soporte</a>
+        </p>
     </footer>
 
-    <div class="accessibility-container">
-        <button
-            type="button"
-            class="accessibility-btn"
-            aria-label="Opciones de accesibilidad"
-            aria-expanded="false"
-            aria-controls="panel-accesibilidad">
-            ♿
-        </button>
-
-        <div
-            id="panel-accesibilidad"
-            class="accessibility-panel"
-            role="region"
-            aria-label="Panel de accesibilidad"
-            hidden>
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
             <h3>Accesibilidad</h3>
-
-            <label>
-                <input type="checkbox" id="alto-contraste">
-                Alto contraste
-            </label>
-            <label>
-                <input type="checkbox" id="texto-grande">
-                Texto grande
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Compatibilidad con lector de pantalla
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Navegación por voz
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Vibración para notificaciones
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Reducir animaciones
-            </label>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
         </div>
     </div>
 
+    <script src="assets/js/datos/datos-ejemplo.js"></script>
+    <script src="assets/js/nucleo/almacenamiento.js"></script>
+    <script src="assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="assets/js/nucleo/layout-app.js"></script>
+    <script src="assets/js/nucleo/accesibilidad.js"></script>
     <script src="index.js"></script>
 </body>
 

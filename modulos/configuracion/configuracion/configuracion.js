@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-    LayoutPublico.inicializar();
+    LayoutApp.inicializar('configuracion');
 });

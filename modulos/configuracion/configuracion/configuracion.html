@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración - Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/base.css">
+    <link rel="stylesheet" href="../../../assets/css/componentes.css">
+    <link rel="stylesheet" href="../../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/accesibilidad.css">
+    <link rel="stylesheet" href="configuracion.css">
+</head>
+
+<body data-ruta-raiz="../../../">
+
+    <div class="layout-app">
+        <aside class="sidebar" id="sidebar" aria-label="Menú principal">
+            <div class="sidebar-cabecera">
+                <a href="../../../index.html" class="logo">
+                    <span class="logo-icono" aria-hidden="true">🚖</span>
+                    <span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span>
+                </a>
+            </div>
+            <div class="sidebar-usuario">Taxista<strong id="nombre-usuario">—</strong></div>
+            <nav class="sidebar-nav" id="sidebar-nav"></nav>
+        </aside>
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <div class="contenido-app">
+            <header class="barra-app">
+                <button type="button" class="boton-menu-movil" id="btn-menu-movil" aria-label="Abrir menú">☰</button>
+                <span class="barra-app-titulo">Configuración</span>
+            </header>
+            <main class="pagina-app">
+                <div class="encabezado-seccion">
+                    <h1>Configuración</h1>
+                    <p>Personaliza tu experiencia en la plataforma</p>
+                </div>
+
+                <section class="tarjeta seccion-configuracion">
+                    <h2 class="titulo-seccion-config">Notificaciones</h2>
+                    <p class="descripcion-config">Activa o desactiva las alertas que recibes en la app.</p>
+                    <ul class="lista-opciones-config">
+                        <li>
+                            <label class="opcion-config">
+                                <span>Nuevos servicios cercanos</span>
+                                <input type="checkbox" checked disabled>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="opcion-config">
+                                <span>Confirmación de pagos</span>
+                                <input type="checkbox" checked disabled>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="opcion-config">
+                                <span>Actualizaciones del sistema</span>
+                                <input type="checkbox" disabled>
+                            </label>
+                        </li>
+                        <li>
+                            <label class="opcion-config">
+                                <span>Recordatorios de servicio</span>
+                                <input type="checkbox" checked disabled>
+                            </label>
+                        </li>
+                    </ul>
+                    <p class="nota-config">Estas opciones son de demostración y no se guardan en este prototipo.</p>
+                </section>
+
+                <section class="tarjeta seccion-configuracion">
+                    <h2 class="titulo-seccion-config">Accesibilidad</h2>
+                    <p class="descripcion-config">
+                        Usa el botón <strong>♿</strong> en la esquina inferior derecha de la pantalla para activar
+                        alto contraste o texto grande en cualquier momento.
+                    </p>
+                </section>
+
+                <section class="tarjeta seccion-configuracion">
+                    <h2 class="titulo-seccion-config">Ayuda y legal</h2>
+                    <ul class="lista-enlaces-config">
+                        <li><a href="../../ayuda/centro-ayuda/centro-ayuda.html">Centro de ayuda</a></li>
+                        <li><a href="../../ayuda/soporte-contacto/soporte-contacto.html">Soporte y contacto</a></li>
+                        <li><a href="../../legal/terminos-condiciones/terminos-condiciones.html" target="_blank">Términos y condiciones</a></li>
+                        <li><a href="../../legal/politica-privacidad/politica-privacidad.html" target="_blank">Política de privacidad</a></li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
+            <h3>Accesibilidad</h3>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+        </div>
+    </div>
+
+    <script src="../../../assets/js/datos/datos-ejemplo.js"></script>
+    <script src="../../../assets/js/nucleo/almacenamiento.js"></script>
+    <script src="../../../assets/js/nucleo/navegacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-servicios.js"></script>
+    <script src="../../../assets/js/servicios/servicio-notificaciones.js"></script>
+    <script src="../../../assets/js/servicios/servicio-perfil.js"></script>
+    <script src="../../../assets/js/nucleo/layout-app.js"></script>
+    <script src="../../../assets/js/nucleo/accesibilidad.js"></script>
+    <script src="configuracion.js"></script>
+</body>
+
+</html>

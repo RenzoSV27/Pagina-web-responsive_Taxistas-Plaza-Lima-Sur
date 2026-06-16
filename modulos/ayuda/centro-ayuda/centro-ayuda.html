@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de ayuda - Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/base.css">
+    <link rel="stylesheet" href="../../../assets/css/componentes.css">
+    <link rel="stylesheet" href="../../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/accesibilidad.css">
+    <link rel="stylesheet" href="centro-ayuda.css">
+</head>
+
+<body data-ruta-raiz="../../../" class="pagina-publica">
+
+    <header class="barra-navegacion">
+        <a href="../../../index.html" class="logo">
+            <span class="logo-icono" aria-hidden="true">🚖</span>
+            <span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span>
+        </a>
+        <nav class="nav-botones">
+            <a href="../../autenticacion/inicio-sesion/inicio-sesion.html" class="boton-nav-login">Iniciar sesión</a>
+            <a href="../../autenticacion/registro/registro.html" class="boton-nav-registro">Registrarse</a>
+        </nav>
+    </header>
+
+    <main class="pagina-contenido">
+        <div class="encabezado-seccion">
+            <h1>Centro de ayuda</h1>
+            <p>Respuestas a las preguntas más frecuentes de los taxistas</p>
+        </div>
+
+        <ul class="lista-faq" id="lista-faq" aria-label="Preguntas frecuentes"></ul>
+
+        <p class="enlace-formulario" style="margin-top:2rem">
+            ¿No encontraste lo que buscabas?
+            <a href="../soporte-contacto/soporte-contacto.html">Contacta a soporte</a>
+        </p>
+    </main>
+
+    <footer class="pie-sitio">
+        <p>© 2026 Taxi Plaza Lima Sur</p>
+        <p>
+            <a href="../../legal/terminos-condiciones/terminos-condiciones.html">Términos</a>
+            <a href="../../legal/politica-privacidad/politica-privacidad.html">Privacidad</a>
+        </p>
+    </footer>
+
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
+            <h3>Accesibilidad</h3>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+        </div>
+    </div>
+
+    <script src="../../../assets/js/datos/datos-ejemplo.js"></script>
+    <script src="../../../assets/js/nucleo/almacenamiento.js"></script>
+    <script src="../../../assets/js/nucleo/accesibilidad.js"></script>
+    <script src="centro-ayuda.js"></script>
+</body>
+
+</html>

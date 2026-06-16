@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña - Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/base.css">
+    <link rel="stylesheet" href="../../../assets/css/componentes.css">
+    <link rel="stylesheet" href="../../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/accesibilidad.css">
+    <link rel="stylesheet" href="recuperar-contrasena.css">
+</head>
+
+<body data-ruta-raiz="../../../" class="pagina-publica">
+
+    <header class="barra-navegacion">
+        <a href="../../../index.html" class="logo">
+            <span class="logo-icono" aria-hidden="true">🚖</span>
+            <span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span>
+        </a>
+        <nav class="nav-botones">
+            <a href="../inicio-sesion/inicio-sesion.html" class="boton-nav-login">Iniciar sesión</a>
+        </nav>
+    </header>
+
+    <main class="pagina-auth">
+        <div class="tarjeta tarjeta-auth">
+            <h1>Recuperar contraseña</h1>
+            <p>Ingresa tu correo y te enviaremos un enlace de recuperación</p>
+            <form id="formulario-recuperar" class="formulario" novalidate>
+                <div class="grupo-campo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" required placeholder="tu@correo.com">
+                </div>
+                <p id="mensaje-recuperar" class="mensaje-formulario" hidden></p>
+                <button type="submit" class="boton-primario boton-primario--ancho">Enviar enlace</button>
+            </form>
+            <p class="enlace-formulario">
+                <a href="../inicio-sesion/inicio-sesion.html">Volver al inicio de sesión</a>
+            </p>
+        </div>
+    </main>
+
+    <footer class="pie-sitio"><p>© 2026 Taxi Plaza Lima Sur</p></footer>
+
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region" aria-label="Panel de accesibilidad" hidden>
+            <h3>Accesibilidad</h3>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+        </div>
+    </div>
+
+    <script src="../../../assets/js/datos/datos-ejemplo.js"></script>
+    <script src="../../../assets/js/nucleo/almacenamiento.js"></script>
+    <script src="../../../assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="../../../assets/js/nucleo/accesibilidad.js"></script>
+    <script src="recuperar-contrasena.js"></script>
+</body>
+
+</html>

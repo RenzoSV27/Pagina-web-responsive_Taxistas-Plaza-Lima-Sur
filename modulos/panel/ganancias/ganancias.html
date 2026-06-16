@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ganancias - Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../assets/css/base.css">
+    <link rel="stylesheet" href="../../../assets/css/componentes.css">
+    <link rel="stylesheet" href="../../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/accesibilidad.css">
+    <link rel="stylesheet" href="ganancias.css">
+</head>
+
+<body data-ruta-raiz="../../../">
+
+    <div class="layout-app">
+        <aside class="sidebar" id="sidebar" aria-label="Menú principal">
+            <div class="sidebar-cabecera"><a href="../../../index.html" class="logo"><span class="logo-icono">🚖</span><span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span></a></div>
+            <div class="sidebar-usuario">Taxista<strong id="nombre-usuario">—</strong></div>
+            <nav class="sidebar-nav" id="sidebar-nav"></nav>
+        </aside>
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <div class="contenido-app">
+            <header class="barra-app"><button type="button" class="boton-menu-movil" id="btn-menu-movil" aria-label="Abrir menú">☰</button><span class="barra-app-titulo">Ganancias</span></header>
+            <main class="pagina-app">
+                <div class="encabezado-seccion">
+                    <h1>Mis ganancias</h1>
+                    <p>Resumen de ingresos y pagos recibidos</p>
+                </div>
+
+                <section class="rejilla-estadisticas" id="rejilla-ganancias" aria-label="Resumen de ganancias"></section>
+
+                <section class="seccion-ganancias">
+                    <div class="encabezado-seccion">
+                        <h2>Desglose semanal</h2>
+                    </div>
+                    <div class="tarjeta">
+                        <div class="grafico-barras" id="grafico-semanal" role="img" aria-label="Gráfico de barras semanal"></div>
+                    </div>
+                </section>
+
+                <section class="seccion-ganancias">
+                    <div class="encabezado-seccion">
+                        <h2>Últimos pagos</h2>
+                    </div>
+                    <div class="contenedor-tabla">
+                        <table class="tabla-datos" id="tabla-pagos">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Monto</th>
+                                    <th>Método</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-pagos"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
+            <h3>Accesibilidad</h3>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+        </div>
+    </div>
+
+    <script src="../../../assets/js/datos/datos-ejemplo.js"></script>
+    <script src="../../../assets/js/nucleo/almacenamiento.js"></script>
+    <script src="../../../assets/js/nucleo/navegacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-servicios.js"></script>
+    <script src="../../../assets/js/servicios/servicio-notificaciones.js"></script>
+    <script src="../../../assets/js/servicios/servicio-perfil.js"></script>
+    <script src="../../../assets/js/nucleo/layout-app.js"></script>
+    <script src="../../../assets/js/nucleo/accesibilidad.js"></script>
+    <script src="ganancias.js"></script>
+</body>
+
+</html>
