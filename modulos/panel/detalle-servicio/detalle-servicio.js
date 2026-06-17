@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('servicios');
+    await LayoutApp.inicializar('servicios');
 
     const id = Navegacion.obtenerParametro('id');
     if (!id) {

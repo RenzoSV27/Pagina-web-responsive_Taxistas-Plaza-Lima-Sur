@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-    LayoutApp.inicializar('servicios');
+document.addEventListener('DOMContentLoaded', async () => {
+    await LayoutApp.inicializar('servicios');
 
-    const activo = ServicioServicios.requerirServicioActivo([ServicioServicios.ETAPAS.DESTINO]);
+    const activo = await ServicioServicios.requerirServicioActivo([ServicioServicios.ETAPAS.DESTINO]);
     if (!activo) {
-        redirigirSiHayServicioActivo();
+        await redirigirSiHayServicioActivo();
         return;
     }
 
@@ -31,14 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>`;
 
-    document.getElementById('btn-confirmar-entrega').addEventListener('click', () => {
-        ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.CONFIRMACION_ENTREGA);
+    document.getElementById('btn-confirmar-entrega').addEventListener('click', async () => {
+        await ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.CONFIRMACION_ENTREGA);
         window.location.href = '../confirmacion-entrega/confirmacion-entrega.html';
     });
 });
 
-function redirigirSiHayServicioActivo() {
-    const actual = ServicioServicios.obtenerServicioActivo();
+async function redirigirSiHayServicioActivo() {
+    const actual = await ServicioServicios.obtenerServicioActivo();
     if (!actual) return;
     const raiz = document.body.dataset.rutaRaiz || '';
     const rutas = {

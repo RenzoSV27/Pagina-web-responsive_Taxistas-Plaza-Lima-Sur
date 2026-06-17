@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('dashboard');
+    await LayoutApp.inicializar('dashboard');
 
     const raiz = document.body.dataset.rutaRaiz || '';
     const parametroExito = Navegacion.obtenerParametro('exito');
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             </article>`;
     }
 
-    const activo = ServicioServicios.obtenerServicioActivo();
+    const activo = await ServicioServicios.obtenerServicioActivo();
     const aviso = document.getElementById('aviso-servicio-activo');
     if (activo && aviso) {
         const urlContinuar = ServicioServicios.obtenerUrlEtapa(activo.etapa);

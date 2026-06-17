@@ -1,5 +1,4 @@
 const ServicioServicios = {
-    RETRASO_MS: 300,
     ETAPAS: {
         ACEPTADO: 'aceptado',
         RECOGIDA: 'recogida',
@@ -10,79 +9,89 @@ const ServicioServicios = {
         COMPLETADO: 'completado'
     },
 
-    async simularRetraso() {
-        return new Promise((resolver) => setTimeout(resolver, this.RETRASO_MS));
-    },
-
     async obtenerServiciosDisponibles() {
-        await this.simularRetraso();
-        return [...DATOS_EJEMPLO.serviciosDisponibles];
+        return ApiCliente.get('/servicios/disponibles');
     },
 
     async obtenerDetalleServicio(id) {
-        await this.simularRetraso();
-        return DATOS_EJEMPLO.serviciosDisponibles.find((s) => s.id === id) || null;
+        try {
+            return await ApiCliente.get(`/servicios/${id}`);
+        } catch (error) {
+            if (error.estado === 404) return null;
+            throw error;
+        }
     },
 
     async obtenerResumenDia() {
-        await this.simularRetraso();
-        return { ...DATOS_EJEMPLO.resumenDia };
+        return ApiCliente.get('/servicios/resumen-dia');
     },
 
     async obtenerHistorial() {
-        await this.simularRetraso();
-        return [...DATOS_EJEMPLO.historial];
+        return ApiCliente.get('/servicios/historial');
     },
 
     async obtenerGanancias() {
-        await this.simularRetraso();
-        return { ...DATOS_EJEMPLO.ganancias };
+        return ApiCliente.get('/servicios/ganancias');
     },
 
-    obtenerServicioActivo() {
-        return Almacenamiento.obtener(Almacenamiento.CLAVES.SERVICIO_ACTIVO);
+    _guardarCacheActivo(activo) {
+        if (activo) {
+            Almacenamiento.guardar(Almacenamiento.CLAVES.SERVICIO_ACTIVO, activo);
+        } else {
+            Almacenamiento.eliminar(Almacenamiento.CLAVES.SERVICIO_ACTIVO);
+        }
     },
 
-    guardarServicioActivo(servicio, etapa) {
-        Almacenamiento.guardar(Almacenamiento.CLAVES.SERVICIO_ACTIVO, {
-            servicio,
-            etapa,
-            actualizadoEn: new Date().toISOString()
-        });
+    async obtenerServicioActivo() {
+        try {
+            const activo = await ApiCliente.get('/servicios/activo');
+            this._guardarCacheActivo(activo);
+            return activo;
+        } catch {
+            this._guardarCacheActivo(null);
+            return null;
+        }
     },
 
     async aceptarServicio(id) {
-        await this.simularRetraso();
-        const servicio = await this.obtenerDetalleServicio(id);
-        if (!servicio) {
-            return { exito: false, mensaje: 'Servicio no encontrado.' };
+        try {
+            const resultado = await ApiCliente.post(`/servicios/${id}/aceptar`, {});
+            const activo = {
+                servicio: resultado.servicio,
+                etapa: this.ETAPAS.ACEPTADO,
+                actualizadoEn: new Date().toISOString()
+            };
+            this._guardarCacheActivo(activo);
+            return { exito: true, servicio: resultado.servicio };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
         }
-        this.guardarServicioActivo(servicio, this.ETAPAS.ACEPTADO);
-        return { exito: true, servicio };
     },
 
-    avanzarEtapa(etapa) {
-        const activo = this.obtenerServicioActivo();
-        if (!activo) return null;
-        this.guardarServicioActivo(activo.servicio, etapa);
-        return this.obtenerServicioActivo();
+    async avanzarEtapa(etapa) {
+        const activo = await ApiCliente.patch('/servicios/activo/etapa', { etapa });
+        this._guardarCacheActivo(activo);
+        return activo;
     },
 
     async confirmarRecogida() {
-        await this.simularRetraso();
-        return this.avanzarEtapa(this.ETAPAS.EN_CURSO);
+        const activo = await ApiCliente.post('/servicios/activo/confirmar-recogida', {});
+        this._guardarCacheActivo(activo);
+        return activo;
     },
 
     async confirmarEntrega() {
-        await this.simularRetraso();
-        const activo = this.obtenerServicioActivo();
-        if (!activo) return { exito: false, mensaje: 'No hay servicio activo.' };
-        Almacenamiento.eliminar(Almacenamiento.CLAVES.SERVICIO_ACTIVO);
-        return { exito: true, servicio: activo.servicio };
+        try {
+            const resultado = await ApiCliente.post('/servicios/activo/confirmar-entrega', {});
+            this._guardarCacheActivo(null);
+            return { exito: true, servicio: resultado.servicio };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
+        }
     },
 
-    requerirServicioActivo(etapasPermitidas) {
-        const activo = this.obtenerServicioActivo();
+    async requerirServicioActivo(etapasPermitidas) {
+        const activo = await this.obtenerServicioActivo();
         if (!activo) {
             const raiz = document.body?.dataset.rutaRaiz || '';
             window.location.href = `${raiz}modulos/panel/servicios-disponibles/servicios-disponibles.html`;
@@ -107,8 +116,8 @@ const ServicioServicios = {
         return `${raiz}${rutas[etapa] || 'modulos/panel/servicios-disponibles/servicios-disponibles.html'}`;
     },
 
-    redirigirAServicioActivo() {
-        const actual = this.obtenerServicioActivo();
+    async redirigirAServicioActivo() {
+        const actual = await this.obtenerServicioActivo();
         if (!actual) return false;
         window.location.href = this.obtenerUrlEtapa(actual.etapa);
         return true;

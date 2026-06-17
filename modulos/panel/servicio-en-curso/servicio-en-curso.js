@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', () => {
-    LayoutApp.inicializar('servicios');
+document.addEventListener('DOMContentLoaded', async () => {
+    await LayoutApp.inicializar('servicios');
 
-    const activo = ServicioServicios.requerirServicioActivo([ServicioServicios.ETAPAS.EN_CURSO]);
+    const activo = await ServicioServicios.requerirServicioActivo([ServicioServicios.ETAPAS.EN_CURSO]);
     if (!activo) {
-        redirigirSiHayServicioActivo();
+        await redirigirSiHayServicioActivo();
         return;
     }
 
@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
             `${String(minutos).padStart(2, '0')}:${String(segs).padStart(2, '0')}`;
     }, 1000);
 
-    document.getElementById('btn-ir-destino').addEventListener('click', () => {
-        ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.DESTINO);
+    document.getElementById('btn-ir-destino').addEventListener('click', async () => {
+        await ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.DESTINO);
         window.location.href = '../destino-entrega/destino-entrega.html';
     });
 });
 
-function redirigirSiHayServicioActivo() {
-    const actual = ServicioServicios.obtenerServicioActivo();
+async function redirigirSiHayServicioActivo() {
+    const actual = await ServicioServicios.obtenerServicioActivo();
     if (!actual) return;
     const raiz = document.body.dataset.rutaRaiz || '';
     const rutas = {

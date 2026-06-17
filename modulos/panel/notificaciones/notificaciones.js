@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('notificaciones');
+    await LayoutApp.inicializar('notificaciones');
     await renderizarNotificaciones();
 });
 
@@ -40,7 +40,7 @@ async function renderizarNotificaciones() {
             const id = boton.dataset.id;
             if (!id) return;
             await ServicioNotificaciones.marcarComoLeida(id);
-            LayoutApp.actualizarBadgeNotificaciones();
+            await LayoutApp.actualizarBadgeNotificaciones();
             await renderizarNotificaciones();
         });
     });

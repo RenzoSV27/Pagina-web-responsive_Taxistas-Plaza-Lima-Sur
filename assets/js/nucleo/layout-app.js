@@ -9,13 +9,13 @@ const LayoutApp = {
         { id: 'configuracion', etiqueta: 'Configuración', icono: '⚙️', ruta: 'modulos/configuracion/configuracion/configuracion.html' }
     ],
 
-    inicializar(paginaActiva) {
+    async inicializar(paginaActiva) {
         if (!ServicioAutenticacion.requerirSesion()) return;
 
         this.configurarSidebar(paginaActiva);
         this.configurarMenuMovil();
         this.actualizarNombreUsuario();
-        this.actualizarBadgeNotificaciones();
+        await this.actualizarBadgeNotificaciones();
     },
 
     obtenerRutaRaiz() {
@@ -73,10 +73,10 @@ const LayoutApp = {
         if (elemento && sesion) elemento.textContent = sesion.nombre;
     },
 
-    actualizarBadgeNotificaciones() {
+    async actualizarBadgeNotificaciones() {
         const badge = document.getElementById('badge-notificaciones');
         if (!badge) return;
-        const cantidad = ServicioNotificaciones.contarNoLeidas();
+        const cantidad = await ServicioNotificaciones.contarNoLeidas();
         badge.textContent = String(cantidad);
         badge.hidden = cantidad === 0;
     },

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('ganancias');
+    await LayoutApp.inicializar('ganancias');
 
     const ganancias = await ServicioServicios.obtenerGanancias();
 
@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             </article>`;
     }
 
-    const maxMonto = Math.max(...ganancias.desgloseSemanal.map((d) => d.monto));
+    const maxMonto = ganancias.desgloseSemanal.length > 0
+        ? Math.max(...ganancias.desgloseSemanal.map((d) => d.monto))
+        : 0;
     const grafico = document.getElementById('grafico-semanal');
     if (grafico) {
         grafico.innerHTML = ganancias.desgloseSemanal.map((dia) => {
@@ -43,11 +45,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const cuerpo = document.getElementById('cuerpo-pagos');
     if (cuerpo) {
-        cuerpo.innerHTML = ganancias.ultimosPagos.map((pago) => `
+        const pagos = ganancias.ultimosPagos || [];
+        cuerpo.innerHTML = pagos.length > 0
+            ? pagos.map((pago) => `
             <tr>
                 <td data-label="Fecha">${formatearFecha(pago.fecha)}</td>
                 <td data-label="Monto">${formatearMoneda(pago.monto)}</td>
                 <td data-label="Método">${pago.metodo}</td>
-            </tr>`).join('');
+            </tr>`).join('')
+            : '<tr><td colspan="3">No hay pagos registrados.</td></tr>';
     }
 });

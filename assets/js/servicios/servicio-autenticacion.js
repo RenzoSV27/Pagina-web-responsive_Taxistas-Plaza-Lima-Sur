@@ -1,51 +1,50 @@
 const ServicioAutenticacion = {
-    RETRASO_MS: 400,
-
-    async simularRetraso() {
-        return new Promise((resolver) => setTimeout(resolver, this.RETRASO_MS));
-    },
-
     async iniciarSesion(correo, contrasena) {
-        await this.simularRetraso();
-        const demo = DATOS_EJEMPLO.credencialesDemo;
-        if (correo === demo.correo && contrasena === demo.contrasena) {
-            const sesion = {
-                taxistaId: DATOS_EJEMPLO.taxista.id,
-                correo,
-                nombre: DATOS_EJEMPLO.taxista.nombre,
-                iniciadaEn: new Date().toISOString()
-            };
-            Almacenamiento.guardar(Almacenamiento.CLAVES.SESION, sesion);
-            return { exito: true, sesion };
+        try {
+            const resultado = await ApiCliente.post('/auth/login', { correo, contrasena });
+            Almacenamiento.guardar(Almacenamiento.CLAVES.SESION, resultado.sesion);
+            return { exito: true, sesion: resultado.sesion };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
         }
-        return { exito: false, mensaje: 'Correo o contraseña incorrectos.' };
     },
 
     async registrarTaxista(datos) {
-        await this.simularRetraso();
         if (!datos.nombre || !datos.correo || !datos.contrasena) {
             return { exito: false, mensaje: 'Completa todos los campos obligatorios.' };
         }
-        const sesion = {
-            taxistaId: 'tx-nuevo',
-            correo: datos.correo,
-            nombre: datos.nombre,
-            iniciadaEn: new Date().toISOString()
-        };
-        Almacenamiento.guardar(Almacenamiento.CLAVES.SESION, sesion);
-        return { exito: true, sesion };
+
+        try {
+            const resultado = await ApiCliente.post('/auth/registro', {
+                nombre: datos.nombre,
+                dni: datos.dni,
+                telefono: datos.telefono,
+                placa: datos.placa,
+                correo: datos.correo,
+                contrasena: datos.contrasena,
+                aceptaTerminos: datos.aceptaTerminos
+            });
+            Almacenamiento.guardar(Almacenamiento.CLAVES.SESION, resultado.sesion);
+            return { exito: true, sesion: resultado.sesion };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
+        }
     },
 
     async recuperarContrasena(correo) {
-        await this.simularRetraso();
         if (!correo) {
             return { exito: false, mensaje: 'Ingresa tu correo electrónico.' };
         }
-        return { exito: true, mensaje: 'Si el correo está registrado, recibirás un enlace de recuperación.' };
+
+        try {
+            const resultado = await ApiCliente.post('/auth/recuperar-contrasena', { correo });
+            return { exito: true, mensaje: resultado.mensaje };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
+        }
     },
 
     async cambiarContrasena(actual, nueva, confirmacion) {
-        await this.simularRetraso();
         if (!actual || !nueva || !confirmacion) {
             return { exito: false, mensaje: 'Completa todos los campos.' };
         }
@@ -55,7 +54,17 @@ const ServicioAutenticacion = {
         if (nueva.length < 6) {
             return { exito: false, mensaje: 'La contraseña debe tener al menos 6 caracteres.' };
         }
-        return { exito: true, mensaje: 'Contraseña actualizada correctamente.' };
+
+        try {
+            const resultado = await ApiCliente.post('/auth/cambiar-contrasena', {
+                contrasenaActual: actual,
+                contrasenaNueva: nueva,
+                confirmacion
+            });
+            return { exito: true, mensaje: resultado.mensaje };
+        } catch (error) {
+            return { exito: false, mensaje: error.message };
+        }
     },
 
     obtenerSesionActual() {
@@ -63,10 +72,17 @@ const ServicioAutenticacion = {
     },
 
     estaAutenticado() {
-        return Boolean(this.obtenerSesionActual());
+        return Boolean(this.obtenerSesionActual()?.token);
     },
 
-    cerrarSesion() {
+    async cerrarSesion() {
+        try {
+            if (this.estaAutenticado()) {
+                await ApiCliente.post('/auth/logout', {});
+            }
+        } catch {
+            // Ignorar errores al cerrar sesión en el servidor
+        }
         Almacenamiento.limpiarSesion();
         const raiz = document.body?.dataset.rutaRaiz || '';
         window.location.href = `${raiz}index.html`;

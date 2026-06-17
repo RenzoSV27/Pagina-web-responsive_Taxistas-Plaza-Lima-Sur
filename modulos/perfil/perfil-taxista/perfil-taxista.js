@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('perfil');
+    await LayoutApp.inicializar('perfil');
 
     const perfil = await ServicioPerfil.obtenerPerfil();
 

@@ -1,19 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-    LayoutApp.inicializar('servicios');
+document.addEventListener('DOMContentLoaded', async () => {
+    await LayoutApp.inicializar('servicios');
 
     const etapasPermitidas = [
         ServicioServicios.ETAPAS.ACEPTADO,
         ServicioServicios.ETAPAS.RECOGIDA
     ];
-    let activo = ServicioServicios.requerirServicioActivo(etapasPermitidas);
+    let activo = await ServicioServicios.requerirServicioActivo(etapasPermitidas);
     if (!activo) {
-        redirigirSiHayServicioActivo();
+        await redirigirSiHayServicioActivo();
         return;
     }
 
     if (activo.etapa === ServicioServicios.ETAPAS.ACEPTADO) {
-        ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.RECOGIDA);
-        activo = ServicioServicios.obtenerServicioActivo();
+        activo = await ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.RECOGIDA);
     }
 
     const { servicio, etapa } = activo;
@@ -29,14 +28,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById('btn-confirmar-recogida').addEventListener('click', () => {
-        ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.CONFIRMACION_RECOGIDA);
+    document.getElementById('btn-confirmar-recogida').addEventListener('click', async () => {
+        await ServicioServicios.avanzarEtapa(ServicioServicios.ETAPAS.CONFIRMACION_RECOGIDA);
         window.location.href = '../confirmacion-recogida/confirmacion-recogida.html';
     });
 });
 
-function redirigirSiHayServicioActivo() {
-    const actual = ServicioServicios.obtenerServicioActivo();
+async function redirigirSiHayServicioActivo() {
+    const actual = await ServicioServicios.obtenerServicioActivo();
     if (!actual) return;
     const raiz = document.body.dataset.rutaRaiz || '';
     const rutas = {

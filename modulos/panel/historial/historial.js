@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('historial');
+    await LayoutApp.inicializar('historial');
 
     const historial = await ServicioServicios.obtenerHistorial();
     const cuerpo = document.getElementById('cuerpo-historial');

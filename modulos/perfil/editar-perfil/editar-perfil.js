@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('perfil');
+    await LayoutApp.inicializar('perfil');
 
     const perfil = await ServicioPerfil.obtenerPerfil();
     document.getElementById('nombre').value = perfil.nombre;
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 window.location.href = `${raiz}modulos/perfil/perfil-taxista/perfil-taxista.html`;
             }, 600);
         } else {
-            mostrarMensaje('mensaje-editar-perfil', 'No se pudo actualizar el perfil.', 'error');
+            mostrarMensaje('mensaje-editar-perfil', resultado.mensaje || 'No se pudo actualizar el perfil.', 'error');
             boton.disabled = false;
         }
     });

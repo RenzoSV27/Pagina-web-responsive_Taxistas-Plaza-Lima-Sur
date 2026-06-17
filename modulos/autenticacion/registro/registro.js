@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
             telefono: document.getElementById('telefono').value.trim(),
             placa: document.getElementById('placa').value.trim(),
             correo: document.getElementById('correo').value.trim(),
-            contrasena: document.getElementById('contrasena').value
+            contrasena: document.getElementById('contrasena').value,
+            aceptaTerminos: document.getElementById('acepta-terminos').checked
         };
 
         const resultado = await ServicioAutenticacion.registrarTaxista(datos);

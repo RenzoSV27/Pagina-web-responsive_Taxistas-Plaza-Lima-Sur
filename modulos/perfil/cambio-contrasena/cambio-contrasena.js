@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-    LayoutApp.inicializar('perfil');
+document.addEventListener('DOMContentLoaded', async () => {
+    await LayoutApp.inicializar('perfil');
 
     const formulario = document.getElementById('formulario-cambio-contrasena');
     const boton = formulario.querySelector('button[type="submit"]');

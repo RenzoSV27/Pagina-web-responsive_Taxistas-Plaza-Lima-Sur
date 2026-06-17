@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    LayoutApp.inicializar('servicios');
+    await LayoutApp.inicializar('servicios');
 
     const servicios = await ServicioServicios.obtenerServiciosDisponibles();
     const contador = document.getElementById('contador-servicios');
