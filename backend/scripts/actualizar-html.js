@@ -30,7 +30,7 @@ function actualizarHtml(ruta) {
         );
     }
 
-    if (ruta.includes('centro-ayuda.html') || ruta.includes('soporte-contacto.html')) {
+    if (ruta.includes('centro-ayuda.html') || ruta.includes('soporte.html')) {
         if (!contenido.includes('servicio-ayuda.js')) {
             contenido = contenido.replace(
                 '<script src="../../../assets/js/nucleo/api-cliente.js"></script>',

@@ -1,6 +1,3 @@
-CREATE DATABASE PLS;
-USE PLS;
-
 /* ============================================================
    Taxi Plaza Lima Sur - Esquema SQL Server
    Base de datos: PLZ

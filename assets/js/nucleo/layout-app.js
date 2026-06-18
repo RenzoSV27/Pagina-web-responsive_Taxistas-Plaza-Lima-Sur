@@ -1,12 +1,12 @@
 const LayoutApp = {
     enlaces: [
-        { id: 'dashboard', etiqueta: 'Dashboard', icono: '🏠', ruta: 'modulos/panel/dashboard/dashboard.html' },
-        { id: 'servicios', etiqueta: 'Servicios', icono: '📋', ruta: 'modulos/panel/servicios-disponibles/servicios-disponibles.html' },
-        { id: 'historial', etiqueta: 'Historial', icono: '📜', ruta: 'modulos/panel/historial/historial.html' },
-        { id: 'ganancias', etiqueta: 'Ganancias', icono: '💰', ruta: 'modulos/panel/ganancias/ganancias.html' },
-        { id: 'notificaciones', etiqueta: 'Notificaciones', icono: '🔔', ruta: 'modulos/panel/notificaciones/notificaciones.html' },
-        { id: 'perfil', etiqueta: 'Perfil', icono: '👤', ruta: 'modulos/perfil/perfil-taxista/perfil-taxista.html' },
-        { id: 'configuracion', etiqueta: 'Configuración', icono: '⚙️', ruta: 'modulos/configuracion/configuracion/configuracion.html' }
+        { id: 'dashboard', etiqueta: 'Dashboard', icono: '🏠', ruta: 'modulos/panel/dashboard.html' },
+        { id: 'servicios', etiqueta: 'Servicios', icono: '📋', ruta: 'modulos/panel/servicios.html' },
+        { id: 'historial', etiqueta: 'Historial', icono: '📜', ruta: 'modulos/panel/historial.html' },
+        { id: 'ganancias', etiqueta: 'Ganancias', icono: '💰', ruta: 'modulos/panel/ganancias.html' },
+        { id: 'notificaciones', etiqueta: 'Notificaciones', icono: '🔔', ruta: 'modulos/panel/notificaciones.html' },
+        { id: 'perfil', etiqueta: 'Perfil', icono: '👤', ruta: 'modulos/perfil/perfil.html' },
+        { id: 'configuracion', etiqueta: 'Configuración', icono: '⚙️', ruta: 'modulos/configuracion/configuracion.html' }
     ],
 
     async inicializar(paginaActiva) {
@@ -16,6 +16,11 @@ const LayoutApp = {
         this.configurarMenuMovil();
         this.actualizarNombreUsuario();
         await this.actualizarBadgeNotificaciones();
+
+        if (typeof Animaciones !== 'undefined') {
+            Animaciones.panel();
+            Animaciones.botonHover('.boton-primario, .boton-secundario');
+        }
     },
 
     obtenerRutaRaiz() {
@@ -29,8 +34,9 @@ const LayoutApp = {
         const raiz = this.obtenerRutaRaiz();
         nav.innerHTML = this.enlaces.map((enlace) => {
             const activo = enlace.id === paginaActiva ? ' activo' : '';
+            const ariaActual = enlace.id === paginaActiva ? ' aria-current="page"' : '';
             const badge = enlace.id === 'notificaciones' ? '<span class="badge-nav" id="badge-notificaciones" hidden>0</span>' : '';
-            return `<a href="${raiz}${enlace.ruta}" class="enlace-sidebar${activo}" data-pagina="${enlace.id}">
+            return `<a href="${raiz}${enlace.ruta}" class="enlace-sidebar${activo}" data-pagina="${enlace.id}"${ariaActual}>
                 <span class="enlace-sidebar-icono" aria-hidden="true">${enlace.icono}</span>
                 <span>${enlace.etiqueta}</span>${badge}
             </a>`;
@@ -51,6 +57,13 @@ const LayoutApp = {
         const overlay = document.getElementById('sidebar-overlay');
 
         if (!boton || !sidebar) return;
+
+        if (typeof bootstrap !== 'undefined' && sidebar.classList.contains('offcanvas')) {
+            boton.setAttribute('data-bs-toggle', 'offcanvas');
+            boton.setAttribute('data-bs-target', '#sidebar');
+            boton.setAttribute('aria-controls', 'sidebar');
+            return;
+        }
 
         const cerrar = () => {
             sidebar.classList.remove('abierto');
@@ -101,6 +114,10 @@ const LayoutApp = {
                 </div>
             </div>`;
         contenedor.hidden = false;
+
+        if (typeof Animaciones !== 'undefined') {
+            Animaciones.barraProgreso(contenedor.querySelector('.barra-progreso-relleno'));
+        }
     }
 };
 
@@ -108,8 +125,10 @@ const LayoutPublico = {
     inicializar() {
         const sesion = ServicioAutenticacion.obtenerSesionActual();
         const btnPanel = document.getElementById('btn-ir-panel');
-        if (btnPanel && sesion) {
-            btnPanel.hidden = false;
+        const itemPanel = document.getElementById('item-ir-panel');
+        if (sesion) {
+            if (btnPanel) btnPanel.hidden = false;
+            if (itemPanel) itemPanel.hidden = false;
         }
     }
 };
@@ -152,8 +171,14 @@ function obtenerHtmlAccesibilidad(rutaRaiz) {
         <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
             aria-label="Panel de accesibilidad" hidden>
             <h3>Accesibilidad</h3>
-            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
-            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+            <div class="form-check mb-2">
+                <input type="checkbox" class="form-check-input" id="alto-contraste">
+                <label class="form-check-label" for="alto-contraste">Alto contraste</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="texto-grande">
+                <label class="form-check-label" for="texto-grande">Texto grande</label>
+            </div>
         </div>
     </div>`;
 }

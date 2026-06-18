@@ -10,32 +10,32 @@ const Navegacion = {
 
     rutasPublicas: {
         landing: '/index.html',
-        inicioSesion: '/modulos/autenticacion/inicio-sesion/inicio-sesion.html',
-        registro: '/modulos/autenticacion/registro/registro.html',
-        recuperarContrasena: '/modulos/autenticacion/recuperar-contrasena/recuperar-contrasena.html',
-        terminos: '/modulos/legal/terminos-condiciones/terminos-condiciones.html',
-        privacidad: '/modulos/legal/politica-privacidad/politica-privacidad.html',
-        centroAyuda: '/modulos/ayuda/centro-ayuda/centro-ayuda.html',
-        soporte: '/modulos/ayuda/soporte-contacto/soporte-contacto.html'
+        inicioSesion: '/modulos/autenticacion/login.html',
+        registro: '/modulos/autenticacion/registro.html',
+        recuperarContrasena: '/modulos/autenticacion/recuperar.html',
+        terminos: '/modulos/legal/terminos.html',
+        privacidad: '/modulos/legal/privacidad.html',
+        centroAyuda: '/modulos/ayuda/centro-ayuda.html',
+        soporte: '/modulos/ayuda/soporte.html'
     },
 
     rutasPanel: {
-        dashboard: '/modulos/panel/dashboard/dashboard.html',
-        servicios: '/modulos/panel/servicios-disponibles/servicios-disponibles.html',
-        detalleServicio: '/modulos/panel/detalle-servicio/detalle-servicio.html',
-        servicioAceptado: '/modulos/panel/servicio-aceptado/servicio-aceptado.html',
-        puntoRecogida: '/modulos/panel/punto-recogida/punto-recogida.html',
-        confirmacionRecogida: '/modulos/panel/confirmacion-recogida/confirmacion-recogida.html',
-        servicioEnCurso: '/modulos/panel/servicio-en-curso/servicio-en-curso.html',
-        destinoEntrega: '/modulos/panel/destino-entrega/destino-entrega.html',
-        confirmacionEntrega: '/modulos/panel/confirmacion-entrega/confirmacion-entrega.html',
-        historial: '/modulos/panel/historial/historial.html',
-        ganancias: '/modulos/panel/ganancias/ganancias.html',
-        notificaciones: '/modulos/panel/notificaciones/notificaciones.html',
-        perfil: '/modulos/perfil/perfil-taxista/perfil-taxista.html',
-        editarPerfil: '/modulos/perfil/editar-perfil/editar-perfil.html',
-        cambioContrasena: '/modulos/perfil/cambio-contrasena/cambio-contrasena.html',
-        configuracion: '/modulos/configuracion/configuracion/configuracion.html'
+        dashboard: '/modulos/panel/dashboard.html',
+        servicios: '/modulos/panel/servicios.html',
+        detalleServicio: '/modulos/panel/servicio/detalle.html',
+        servicioAceptado: '/modulos/panel/servicio/aceptado.html',
+        puntoRecogida: '/modulos/panel/servicio/recogida.html',
+        confirmacionRecogida: '/modulos/panel/servicio/confirmacion-recogida.html',
+        servicioEnCurso: '/modulos/panel/servicio/en-curso.html',
+        destinoEntrega: '/modulos/panel/servicio/destino.html',
+        confirmacionEntrega: '/modulos/panel/servicio/confirmacion-entrega.html',
+        historial: '/modulos/panel/historial.html',
+        ganancias: '/modulos/panel/ganancias.html',
+        notificaciones: '/modulos/panel/notificaciones.html',
+        perfil: '/modulos/perfil/perfil.html',
+        editarPerfil: '/modulos/perfil/editar.html',
+        cambioContrasena: '/modulos/perfil/contrasena.html',
+        configuracion: '/modulos/configuracion/configuracion.html'
     },
 
     irADetalleServicio(id) {

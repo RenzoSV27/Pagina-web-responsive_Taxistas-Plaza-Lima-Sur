@@ -160,6 +160,78 @@ html.alto-contraste .tabla-datos td {
     border-color: #ffffff;
 }
 
+html.alto-contraste .contenido-app,
+html.alto-contraste .pagina-app {
+    background: #000000;
+}
+
+html.alto-contraste .barra-app {
+    background: #000000 !important;
+    border-color: #ffffff !important;
+}
+
+html.alto-contraste .barra-app-titulo {
+    color: #ffff00 !important;
+}
+
+html.alto-contraste .enlace-sidebar.activo {
+    background: #1a1a1a !important;
+    border: 1px solid #ffff00;
+    color: #ffff00 !important;
+}
+
+html.alto-contraste .mensaje-formulario,
+html.alto-contraste .mensaje-formulario--info,
+html.alto-contraste .mensaje-formulario--exito,
+html.alto-contraste .mensaje-formulario--error {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+html.alto-contraste .mensaje-formulario--info {
+    border-color: #ffff00 !important;
+}
+
+html.alto-contraste .mensaje-formulario--exito {
+    border-color: #00ff00 !important;
+    color: #00ff00 !important;
+}
+
+html.alto-contraste .mensaje-formulario--error {
+    border-color: #ff4444 !important;
+    color: #ff4444 !important;
+}
+
+html.alto-contraste .item-notificacion--no-leida {
+    background: #000000 !important;
+    border: 2px solid #ffffff !important;
+    border-left: 4px solid #ffff00 !important;
+}
+
+html.alto-contraste .item-notificacion:hover {
+    background: #111111 !important;
+}
+
+html.alto-contraste .notificacion-contenido h4,
+html.alto-contraste .notificacion-contenido p,
+html.alto-contraste .notificacion-fecha,
+html.alto-contraste .tarjeta-estadistica h3,
+html.alto-contraste .tarjeta h3,
+html.alto-contraste .tarjeta-servicio h3,
+html.alto-contraste .lista-meta,
+html.alto-contraste .lista-meta li,
+html.alto-contraste .encabezado-seccion p,
+html.alto-contraste .boton-faq,
+html.alto-contraste .respuesta-faq {
+    color: #ffffff !important;
+}
+
+html.alto-contraste .tarjeta-beneficio p,
+html.alto-contraste .tarjeta-beneficio h3 {
+    color: #ffffff !important;
+}
+
 html.alto-contraste button:focus-visible,
 html.alto-contraste input:focus-visible {
     outline: 3px solid #ffff00;

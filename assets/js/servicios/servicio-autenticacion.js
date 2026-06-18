@@ -84,6 +84,7 @@ const ServicioAutenticacion = {
             // Ignorar errores al cerrar sesión en el servidor
         }
         Almacenamiento.limpiarSesion();
+        sessionStorage.removeItem('panel-activo');
         const raiz = document.body?.dataset.rutaRaiz || '';
         window.location.href = `${raiz}index.html`;
     },
@@ -91,7 +92,7 @@ const ServicioAutenticacion = {
     requerirSesion() {
         if (!this.estaAutenticado()) {
             const raiz = document.body?.dataset.rutaRaiz || '';
-            window.location.href = `${raiz}modulos/autenticacion/inicio-sesion/inicio-sesion.html`;
+            window.location.href = `${raiz}modulos/autenticacion/login.html`;
             return false;
         }
         return true;

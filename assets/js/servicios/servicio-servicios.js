@@ -94,7 +94,7 @@ const ServicioServicios = {
         const activo = await this.obtenerServicioActivo();
         if (!activo) {
             const raiz = document.body?.dataset.rutaRaiz || '';
-            window.location.href = `${raiz}modulos/panel/servicios-disponibles/servicios-disponibles.html`;
+            window.location.href = `${raiz}modulos/panel/servicios.html`;
             return null;
         }
         if (etapasPermitidas && !etapasPermitidas.includes(activo.etapa)) {
@@ -106,14 +106,14 @@ const ServicioServicios = {
     obtenerUrlEtapa(etapa) {
         const raiz = document.body?.dataset.rutaRaiz || '';
         const rutas = {
-            [this.ETAPAS.ACEPTADO]: 'modulos/panel/servicio-aceptado/servicio-aceptado.html',
-            [this.ETAPAS.RECOGIDA]: 'modulos/panel/punto-recogida/punto-recogida.html',
-            [this.ETAPAS.CONFIRMACION_RECOGIDA]: 'modulos/panel/confirmacion-recogida/confirmacion-recogida.html',
-            [this.ETAPAS.EN_CURSO]: 'modulos/panel/servicio-en-curso/servicio-en-curso.html',
-            [this.ETAPAS.DESTINO]: 'modulos/panel/destino-entrega/destino-entrega.html',
-            [this.ETAPAS.CONFIRMACION_ENTREGA]: 'modulos/panel/confirmacion-entrega/confirmacion-entrega.html'
+            [this.ETAPAS.ACEPTADO]: 'modulos/panel/servicio/aceptado.html',
+            [this.ETAPAS.RECOGIDA]: 'modulos/panel/servicio/recogida.html',
+            [this.ETAPAS.CONFIRMACION_RECOGIDA]: 'modulos/panel/servicio/confirmacion-recogida.html',
+            [this.ETAPAS.EN_CURSO]: 'modulos/panel/servicio/en-curso.html',
+            [this.ETAPAS.DESTINO]: 'modulos/panel/servicio/destino.html',
+            [this.ETAPAS.CONFIRMACION_ENTREGA]: 'modulos/panel/servicio/confirmacion-entrega.html'
         };
-        return `${raiz}${rutas[etapa] || 'modulos/panel/servicios-disponibles/servicios-disponibles.html'}`;
+        return `${raiz}${rutas[etapa] || 'modulos/panel/servicios.html'}`;
     },
 
     async redirigirAServicioActivo() {
