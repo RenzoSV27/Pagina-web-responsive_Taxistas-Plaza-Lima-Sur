@@ -135,6 +135,22 @@
     height: 100%;
 }
 
+.rejilla-estadisticas.row > .col,
+.rejilla-servicios.row > .col,
+.rejilla-beneficios.row > .col,
+.enlaces-rapidos.row > .col {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.rejilla-estadisticas.row > .col > *,
+.rejilla-servicios.row > .col > *,
+.enlaces-rapidos.row > .col > * {
+    width: 100%;
+    min-width: 0;
+}
+
 /* Tablas responsivas */
 .table-responsive {
     border-radius: var(--radius-md);
@@ -175,6 +191,7 @@
 
     .contenido-app {
         margin-left: 0 !important;
+        width: 100% !important;
     }
 }
 

@@ -72,6 +72,10 @@
     padding: 1.5rem;
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(15, 23, 42, 0.06);
+    max-width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .tarjeta--destacada {
@@ -81,9 +85,9 @@
 
 /* Stats */
 
-.rejilla-estadisticas {
+.rejilla-estadisticas:not(.row) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
     gap: 1.25rem;
 }
 
@@ -175,9 +179,9 @@
 
 /* Tarjetas de servicio */
 
-.rejilla-servicios {
+.rejilla-servicios:not(.row) {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 1.5rem;
 }
 
@@ -197,6 +201,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap;
     gap: 0.75rem;
     margin-bottom: 1rem;
 }
@@ -205,6 +210,8 @@
     color: var(--color-primary-dark);
     font-size: 1.2rem;
     font-weight: 700;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .etiqueta-servicio {
@@ -231,11 +238,12 @@
 
 .lista-meta li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.5rem;
     margin-bottom: 0.6rem;
     color: var(--color-text-muted);
     font-size: 0.95rem;
+    word-break: break-word;
 }
 
 .tarifa {
@@ -249,10 +257,12 @@
 
 .contenedor-tabla {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     background: var(--color-surface);
     border: 1px solid rgba(15, 23, 42, 0.06);
+    max-width: 100%;
 }
 
 .tabla-datos {
@@ -389,6 +399,7 @@
 
 .item-notificacion {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     padding: 1.25rem;
     border-radius: var(--radius-md);
@@ -524,7 +535,9 @@
 
 .barra-progreso-pasos {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 0.35rem;
     margin-top: 0.75rem;
     font-size: 0.75rem;
     color: var(--color-text-muted);
@@ -538,6 +551,9 @@
     gap: 0.5rem;
     height: 180px;
     padding-top: 1rem;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .barra-grafico {
@@ -566,7 +582,7 @@
 
 .detalle-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 1.5rem;
 }
 
@@ -577,8 +593,18 @@
 .lista-detalle li {
     display: flex;
     justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.35rem 1rem;
     padding: 0.75rem 0;
     border-bottom: 1px solid #f1f5f9;
+}
+
+.lista-detalle li span {
+    text-align: right;
+    word-break: break-word;
+    min-width: 0;
+    flex: 1 1 auto;
 }
 
 .lista-detalle li:last-child {
@@ -589,6 +615,7 @@
     color: var(--color-text-muted);
     font-weight: 600;
     font-size: 0.9rem;
+    flex-shrink: 0;
 }
 
 .acciones-flujo {
@@ -601,6 +628,39 @@
 @media (max-width: 768px) {
     .detalle-grid {
         grid-template-columns: 1fr;
+    }
+
+    .lista-detalle li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .lista-detalle li span {
+        text-align: left;
+        width: 100%;
+    }
+
+    .acciones-flujo {
+        flex-direction: column;
+    }
+
+    .acciones-flujo .boton-primario,
+    .acciones-flujo .boton-secundario,
+    .acciones-flujo .boton-exito,
+    .acciones-flujo .boton-peligro,
+    .acciones-flujo .boton-aceptar {
+        width: 100%;
+    }
+
+    .tarjeta-servicio-cabecera {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .barra-progreso-etiqueta {
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
     .tabla-datos thead {
@@ -623,9 +683,12 @@
     .tabla-datos td {
         display: flex;
         justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
         padding: 0.4rem 0;
         border: none;
         text-align: right;
+        word-break: break-word;
     }
 
     .tabla-datos td::before {
@@ -634,11 +697,26 @@
         color: var(--color-text-muted);
         font-size: 0.8rem;
         text-transform: uppercase;
+        flex-shrink: 0;
+        text-align: left;
     }
 }
 
 @media (max-width: 600px) {
-    .rejilla-estadisticas {
+    .rejilla-estadisticas:not(.row),
+    .rejilla-servicios:not(.row) {
         grid-template-columns: 1fr;
+    }
+
+    .tarjeta {
+        padding: 1.15rem;
+    }
+
+    .item-notificacion {
+        flex-direction: column;
+    }
+
+    .tarifa {
+        font-size: 1.4rem;
     }
 }

@@ -1,1 +1,5 @@
 /* Estilos específicos de la landing — sin reglas adicionales por ahora */
+.boton-nav-registro,
+#btn-ir-panel {
+    color: #ffffff !important;
+}

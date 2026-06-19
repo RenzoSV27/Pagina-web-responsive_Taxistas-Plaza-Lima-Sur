@@ -34,6 +34,7 @@
 html {
     scroll-behavior: smooth;
     background: var(--color-bg);
+    overflow-x: clip;
 }
 
 body {
@@ -42,6 +43,8 @@ body {
     color: var(--color-text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    min-width: 0;
 }
 
 a {

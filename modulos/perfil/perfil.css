@@ -6,3 +6,9 @@
 .perfil-datos {
     margin-bottom: 0.5rem;
 }
+
+@media (max-width: 480px) {
+    .perfil-estadisticas {
+        grid-template-columns: 1fr;
+    }
+}
