@@ -1,7 +1,7 @@
 const express = require('express');
 const { consultar, ejecutar } = require('../config/db');
 const { mapearPreferencias } = require('../utils/mappers');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, requiereTaxista } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get('/faq', async (req, res) => {
     }
 });
 
-router.post('/soporte', autenticar, async (req, res) => {
+router.post('/soporte', autenticar, requiereTaxista, async (req, res) => {
     try {
         const { nombre, correo, asunto, mensaje } = req.body;
 

@@ -1,11 +1,13 @@
 const express = require('express');
 const { consultarUno, ejecutar } = require('../config/db');
 const { mapearPreferencias } = require('../utils/mappers');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, requiereTaxista } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', autenticar, async (req, res) => {
+router.use(autenticar, requiereTaxista);
+
+router.get('/', async (req, res) => {
     try {
         const preferencias = await consultarUno(
             'SELECT * FROM dbo.preferencias_taxista WHERE taxista_id = @taxistaId',
@@ -18,7 +20,7 @@ router.get('/', autenticar, async (req, res) => {
     }
 });
 
-router.put('/', autenticar, async (req, res) => {
+router.put('/', async (req, res) => {
     try {
         const {
             notifServiciosCercanos,

@@ -1,4 +1,5 @@
 const { consultarUno } = require('../config/db');
+const { obtenerRol, ROLES } = require('../utils/roles');
 
 async function autenticar(req, res, next) {
     const encabezado = req.headers.authorization;
@@ -23,6 +24,7 @@ async function autenticar(req, res, next) {
 
         req.taxistaId = sesion.taxista_id;
         req.sesion = sesion;
+        req.rol = obtenerRol(sesion.correo);
         next();
     } catch (error) {
         console.error('Error de autenticación:', error);
@@ -30,4 +32,18 @@ async function autenticar(req, res, next) {
     }
 }
 
-module.exports = { autenticar };
+function requiereAdmin(req, res, next) {
+    if (req.rol !== ROLES.ADMIN) {
+        return res.status(403).json({ exito: false, mensaje: 'Acceso restringido a administradores.' });
+    }
+    next();
+}
+
+function requiereTaxista(req, res, next) {
+    if (req.rol === ROLES.ADMIN) {
+        return res.status(403).json({ exito: false, mensaje: 'Los administradores deben usar el panel de administración.' });
+    }
+    next();
+}
+
+module.exports = { autenticar, requiereAdmin, requiereTaxista };

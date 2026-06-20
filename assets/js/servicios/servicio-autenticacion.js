@@ -71,6 +71,18 @@ const ServicioAutenticacion = {
         return Almacenamiento.obtener(Almacenamiento.CLAVES.SESION);
     },
 
+    esAdmin() {
+        return this.obtenerSesionActual()?.rol === 'admin';
+    },
+
+    obtenerRutaPanel() {
+        const raiz = document.body?.dataset.rutaRaiz || '';
+        if (this.esAdmin()) {
+            return `${raiz}modulos/admin/dashboard.html`;
+        }
+        return `${raiz}modulos/panel/dashboard.html`;
+    },
+
     estaAutenticado() {
         return Boolean(this.obtenerSesionActual()?.token);
     },

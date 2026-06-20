@@ -10,6 +10,7 @@ const serviciosRoutes = require('./routes/servicios');
 const notificacionesRoutes = require('./routes/notificaciones');
 const ayudaRoutes = require('./routes/ayuda');
 const preferenciasRoutes = require('./routes/preferencias');
+const adminRoutes = require('./routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -33,6 +34,7 @@ app.use('/api/servicios', serviciosRoutes);
 app.use('/api/notificaciones', notificacionesRoutes);
 app.use('/api/ayuda', ayudaRoutes);
 app.use('/api/preferencias', preferenciasRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.use(express.static(raizProyecto));
 

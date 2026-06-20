@@ -8,9 +8,11 @@ const {
     obtenerEtiquetaDia,
     formatearFecha
 } = require('../utils/mappers');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, requiereTaxista } = require('../middleware/auth');
 
 const router = express.Router();
+
+router.use(autenticar, requiereTaxista);
 
 const ETAPAS_VALIDAS = [
     'aceptado',
@@ -38,7 +40,7 @@ async function obtenerServicioActivoCompleto(taxistaId) {
     };
 }
 
-router.get('/disponibles', autenticar, async (req, res) => {
+router.get('/disponibles', async (req, res) => {
     try {
         const filas = await consultar(`
             SELECT * FROM dbo.servicios
@@ -52,7 +54,7 @@ router.get('/disponibles', autenticar, async (req, res) => {
     }
 });
 
-router.get('/resumen-dia', autenticar, async (req, res) => {
+router.get('/resumen-dia', async (req, res) => {
     try {
         const resumen = await consultarUno(`
             SELECT
@@ -80,7 +82,7 @@ router.get('/resumen-dia', autenticar, async (req, res) => {
     }
 });
 
-router.get('/historial', autenticar, async (req, res) => {
+router.get('/historial', async (req, res) => {
     try {
         const filas = await consultar(`
             SELECT * FROM dbo.historial_servicios
@@ -94,7 +96,7 @@ router.get('/historial', autenticar, async (req, res) => {
     }
 });
 
-router.get('/ganancias', autenticar, async (req, res) => {
+router.get('/ganancias', async (req, res) => {
     try {
         const taxistaId = req.taxistaId;
 
@@ -160,7 +162,7 @@ router.get('/ganancias', autenticar, async (req, res) => {
     }
 });
 
-router.get('/activo', autenticar, async (req, res) => {
+router.get('/activo', async (req, res) => {
     try {
         const activo = await obtenerServicioActivoCompleto(req.taxistaId);
         res.json(activo);
@@ -170,7 +172,7 @@ router.get('/activo', autenticar, async (req, res) => {
     }
 });
 
-router.get('/:id', autenticar, async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const servicio = await consultarUno(
             'SELECT * FROM dbo.servicios WHERE id = @id',
@@ -188,7 +190,7 @@ router.get('/:id', autenticar, async (req, res) => {
     }
 });
 
-router.post('/:id/aceptar', autenticar, async (req, res) => {
+router.post('/:id/aceptar', async (req, res) => {
     const taxistaId = req.taxistaId;
     const servicioId = Number(req.params.id);
 
@@ -240,7 +242,7 @@ router.post('/:id/aceptar', autenticar, async (req, res) => {
     }
 });
 
-router.patch('/activo/etapa', autenticar, async (req, res) => {
+router.patch('/activo/etapa', async (req, res) => {
     try {
         const { etapa } = req.body;
 
@@ -269,7 +271,7 @@ router.patch('/activo/etapa', autenticar, async (req, res) => {
     }
 });
 
-router.post('/activo/confirmar-recogida', autenticar, async (req, res) => {
+router.post('/activo/confirmar-recogida', async (req, res) => {
     try {
         const activo = await consultarUno(
             'SELECT id FROM dbo.servicios_activos WHERE taxista_id = @taxistaId',
@@ -292,7 +294,7 @@ router.post('/activo/confirmar-recogida', autenticar, async (req, res) => {
     }
 });
 
-router.post('/activo/confirmar-entrega', autenticar, async (req, res) => {
+router.post('/activo/confirmar-entrega', async (req, res) => {
     const taxistaId = req.taxistaId;
 
     try {

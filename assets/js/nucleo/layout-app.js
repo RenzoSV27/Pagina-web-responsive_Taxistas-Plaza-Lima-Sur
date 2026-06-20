@@ -12,6 +12,11 @@ const LayoutApp = {
     async inicializar(paginaActiva) {
         if (!ServicioAutenticacion.requerirSesion()) return;
 
+        if (ServicioAutenticacion.esAdmin()) {
+            window.location.href = ServicioAutenticacion.obtenerRutaPanel();
+            return;
+        }
+
         this.configurarSidebar(paginaActiva);
         this.configurarMenuMovil();
         this.actualizarNombreUsuario();

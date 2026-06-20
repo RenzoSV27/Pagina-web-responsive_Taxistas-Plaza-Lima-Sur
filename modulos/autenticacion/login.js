@@ -2,8 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Animaciones !== 'undefined') Animaciones.autenticacion();
 
     if (ServicioAutenticacion.estaAutenticado()) {
-        const raiz = document.body.dataset.rutaRaiz;
-        window.location.href = `${raiz}modulos/panel/dashboard.html`;
+        window.location.href = ServicioAutenticacion.obtenerRutaPanel();
         return;
     }
 
@@ -21,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (resultado.exito) {
             mostrarMensaje('mensaje-login', 'Ingresando...', 'exito');
-            const raiz = document.body.dataset.rutaRaiz;
-            window.location.href = `${raiz}modulos/panel/dashboard.html`;
+            window.location.href = ServicioAutenticacion.obtenerRutaPanel();
         } else {
             mostrarMensaje('mensaje-login', resultado.mensaje, 'error');
             boton.disabled = false;

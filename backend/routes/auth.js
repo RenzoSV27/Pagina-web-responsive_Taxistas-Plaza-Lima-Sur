@@ -4,16 +4,19 @@ const { v4: uuidv4 } = require('uuid');
 const { consultarUno, ejecutar } = require('../config/db');
 const { mapearTaxista } = require('../utils/mappers');
 const { autenticar } = require('../middleware/auth');
+const { esAdmin, obtenerRol } = require('../utils/roles');
 
 const router = express.Router();
 
 const DIAS_SESION = 7;
 
 function crearSesionRespuesta(taxista, token) {
+    const rol = obtenerRol(taxista.correo);
     return {
         taxistaId: String(taxista.id),
         correo: taxista.correo,
         nombre: taxista.nombre,
+        rol,
         token,
         iniciadaEn: new Date().toISOString()
     };
@@ -84,6 +87,10 @@ router.post('/registro', async (req, res) => {
         }
 
         const correoNormalizado = correo.trim().toLowerCase();
+
+        if (esAdmin(correoNormalizado)) {
+            return res.status(403).json({ exito: false, mensaje: 'Este correo está reservado para administración.' });
+        }
 
         const existente = await consultarUno(
             'SELECT id FROM dbo.taxistas WHERE correo = @correo OR dni = @dni',
@@ -218,6 +225,7 @@ router.get('/sesion', autenticar, async (req, res) => {
         taxistaId: String(req.taxistaId),
         correo: req.sesion.correo,
         nombre: req.sesion.nombre,
+        rol: req.rol,
         iniciadaEn: new Date().toISOString()
     });
 });

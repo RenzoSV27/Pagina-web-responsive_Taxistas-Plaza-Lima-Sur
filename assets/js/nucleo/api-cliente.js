@@ -59,5 +59,9 @@ const ApiCliente = {
             method: 'PATCH',
             body: JSON.stringify(cuerpo)
         });
+    },
+
+    delete(ruta) {
+        return this.peticion(ruta, { method: 'DELETE' });
     }
 };

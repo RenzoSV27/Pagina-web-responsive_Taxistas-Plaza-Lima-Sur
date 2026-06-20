@@ -45,6 +45,18 @@ function mapearServicio(fila) {
     };
 }
 
+function mapearServicioAdmin(fila) {
+    if (!fila) return null;
+    return {
+        ...mapearServicio(fila),
+        estado: fila.estado,
+        taxistaId: fila.taxista_id ? String(fila.taxista_id) : null,
+        taxistaNombre: fila.taxista_nombre || null,
+        creadoEn: fila.creado_en ? new Date(fila.creado_en).toISOString() : null,
+        actualizadoEn: fila.actualizado_en ? new Date(fila.actualizado_en).toISOString() : null
+    };
+}
+
 function mapearHistorial(fila) {
     return {
         id: String(fila.id),
@@ -115,6 +127,7 @@ function obtenerEtiquetaDia(fecha) {
 module.exports = {
     mapearTaxista,
     mapearServicio,
+    mapearServicioAdmin,
     mapearHistorial,
     mapearNotificacion,
     mapearPago,

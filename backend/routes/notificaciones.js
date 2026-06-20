@@ -1,11 +1,13 @@
 const express = require('express');
 const { consultar, ejecutar } = require('../config/db');
 const { mapearNotificacion } = require('../utils/mappers');
-const { autenticar } = require('../middleware/auth');
+const { autenticar, requiereTaxista } = require('../middleware/auth');
 
 const router = express.Router();
 
-router.get('/', autenticar, async (req, res) => {
+router.use(autenticar, requiereTaxista);
+
+router.get('/', async (req, res) => {
     try {
         const filas = await consultar(`
             SELECT * FROM dbo.notificaciones
@@ -19,7 +21,7 @@ router.get('/', autenticar, async (req, res) => {
     }
 });
 
-router.get('/no-leidas', autenticar, async (req, res) => {
+router.get('/no-leidas', async (req, res) => {
     try {
         const resultado = await consultar(`
             SELECT COUNT(*) AS total FROM dbo.notificaciones
@@ -32,7 +34,7 @@ router.get('/no-leidas', autenticar, async (req, res) => {
     }
 });
 
-router.patch('/:id/leida', autenticar, async (req, res) => {
+router.patch('/:id/leida', async (req, res) => {
     try {
         await ejecutar(`
             UPDATE dbo.notificaciones SET leida = 1
