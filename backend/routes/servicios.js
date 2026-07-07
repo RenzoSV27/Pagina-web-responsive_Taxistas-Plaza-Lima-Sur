@@ -25,7 +25,27 @@ const ETAPAS_VALIDAS = [
 
 async function obtenerServicioActivoCompleto(taxistaId) {
     const activo = await consultarUno(`
-        SELECT sa.etapa, sa.actualizado_en, s.*
+        SELECT
+            sa.etapa,
+            sa.actualizado_en AS activo_actualizado_en,
+            s.id,
+            s.tienda,
+            s.tipo,
+            s.prioridad,
+            s.origen,
+            s.destino,
+            s.producto,
+            s.peso,
+            s.tarifa,
+            s.distancia,
+            s.tiempo_estimado,
+            s.cliente,
+            s.telefono_cliente,
+            s.notas,
+            s.latitud_recogida,
+            s.longitud_recogida,
+            s.latitud_entrega,
+            s.longitud_entrega
         FROM dbo.servicios_activos sa
         INNER JOIN dbo.servicios s ON s.id = sa.servicio_id
         WHERE sa.taxista_id = @taxistaId
@@ -33,10 +53,15 @@ async function obtenerServicioActivoCompleto(taxistaId) {
 
     if (!activo) return null;
 
+    const fechaActivo = activo.activo_actualizado_en || activo.actualizado_en;
+    const actualizadoEn = fechaActivo && !Number.isNaN(new Date(fechaActivo).getTime())
+        ? new Date(fechaActivo).toISOString()
+        : new Date().toISOString();
+
     return {
         servicio: mapearServicio(activo),
         etapa: activo.etapa,
-        actualizadoEn: new Date(activo.actualizado_en).toISOString()
+        actualizadoEn
     };
 }
 
@@ -234,8 +259,11 @@ router.post('/:id/aceptar', async (req, res) => {
             VALUES (@taxistaId, N'Servicio aceptado', @mensaje, N'servicio')
         `, { taxistaId, mensaje: `Has aceptado un servicio de ${servicio.tienda}.` });
 
-        const servicioMapeado = mapearServicio(servicio);
-        res.json({ exito: true, servicio: servicioMapeado });
+        const servicioActualizado = await consultarUno(
+            'SELECT * FROM dbo.servicios WHERE id = @id',
+            { id: servicioId }
+        );
+        res.json({ exito: true, servicio: mapearServicio(servicioActualizado) });
     } catch (error) {
         console.error('Error al aceptar servicio:', error);
         res.status(500).json({ exito: false, mensaje: 'Error al aceptar el servicio.' });

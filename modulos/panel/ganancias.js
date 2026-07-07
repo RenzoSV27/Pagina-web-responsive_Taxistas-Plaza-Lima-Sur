@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', async () => {
     await LayoutApp.inicializar('ganancias');
 
-    const ganancias = await ServicioServicios.obtenerGanancias();
+    try {
+        const ganancias = await ServicioServicios.obtenerGanancias();
 
-    const rejilla = document.getElementById('rejilla-ganancias');
-    if (rejilla) {
-        rejilla.innerHTML = `
+        const rejilla = document.getElementById('rejilla-ganancias');
+        if (rejilla) {
+            rejilla.innerHTML = `
             <article class="tarjeta tarjeta-estadistica estadistica--azul">
                 <span class="estadistica-icono" aria-hidden="true">📅</span>
                 <h3>Hoy</h3>
@@ -26,33 +27,36 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <h3>Pendiente de pago</h3>
                 <span class="estadistica-valor">${formatearMoneda(ganancias.pendientePago)}</span>
             </article>`;
-    }
+        }
 
-    const maxMonto = ganancias.desgloseSemanal.length > 0
-        ? Math.max(...ganancias.desgloseSemanal.map((d) => d.monto))
-        : 0;
-    const grafico = document.getElementById('grafico-semanal');
-    if (grafico) {
-        grafico.innerHTML = ganancias.desgloseSemanal.map((dia) => {
-            const altura = maxMonto > 0 ? Math.round((dia.monto / maxMonto) * 100) : 0;
-            return `
+        const maxMonto = ganancias.desgloseSemanal.length > 0
+            ? Math.max(...ganancias.desgloseSemanal.map((d) => d.monto))
+            : 0;
+        const grafico = document.getElementById('grafico-semanal');
+        if (grafico) {
+            grafico.innerHTML = ganancias.desgloseSemanal.map((dia) => {
+                const altura = maxMonto > 0 ? Math.round((dia.monto / maxMonto) * 100) : 0;
+                return `
                 <div class="barra-grafico">
                     <div class="barra-grafico-relleno" style="height:${altura}%" title="${formatearMoneda(dia.monto)}"></div>
                     <span class="barra-grafico-etiqueta">${dia.dia}</span>
                 </div>`;
-        }).join('');
-    }
+            }).join('');
+        }
 
-    const cuerpo = document.getElementById('cuerpo-pagos');
-    if (cuerpo) {
-        const pagos = ganancias.ultimosPagos || [];
-        cuerpo.innerHTML = pagos.length > 0
-            ? pagos.map((pago) => `
+        const cuerpo = document.getElementById('cuerpo-pagos');
+        if (cuerpo) {
+            const pagos = ganancias.ultimosPagos || [];
+            cuerpo.innerHTML = pagos.length > 0
+                ? pagos.map((pago) => `
             <tr>
                 <td data-label="Fecha">${formatearFecha(pago.fecha)}</td>
                 <td data-label="Monto">${formatearMoneda(pago.monto)}</td>
                 <td data-label="Método">${pago.metodo}</td>
             </tr>`).join('')
-            : '<tr><td colspan="3">No hay pagos registrados.</td></tr>';
+                : '<tr><td colspan="3">No hay pagos registrados.</td></tr>';
+        }
+    } catch (error) {
+        mostrarMensaje('mensaje-ganancias', error.message || 'No se pudieron cargar las ganancias.', 'error');
     }
 });

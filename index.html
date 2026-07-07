@@ -11,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/bootstrap-custom.css">
-
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/componentes.css">
     <link rel="stylesheet" href="assets/css/layout.css">
@@ -51,71 +50,183 @@
     </header>
 
     <main id="contenido-principal">
-    <section class="seccion-hero">
-        <div class="hero-fondo" aria-hidden="true"></div>
-        <div class="hero-contenido">
-            <span class="insignia-hero">Plataforma para taxistas</span>
-            <h1>Gestiona tus servicios de entrega de forma rápida y segura</h1>
-            <p>
-                Recibe solicitudes, acepta servicios con un solo toque,
-                sigue cada etapa del viaje y lleva un historial completo de tus ganancias.
-            </p>
-            <div class="hero-botones">
-                <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Comenzar gratis</a>
-                <a href="modulos/autenticacion/login.html" class="boton-hero-secundario">Ya tengo cuenta</a>
+        <section class="seccion-hero">
+            <div class="hero-fondo" aria-hidden="true">
+                <div class="hero-patron"></div>
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="tarjeta-hero-flotante">
-                <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=600&auto=format&fit=crop"
-                    class="img-hero d-none d-md-block mb-3" width="320" height="200"
-                    alt="Taxista conduciendo en la ciudad de Lima">
-                <span style="font-size:4rem;display:block;margin-bottom:0.5rem" aria-hidden="true">🚕</span>
-                <p style="opacity:0.75;margin-bottom:0.25rem">Nuevo servicio cerca</p>
-                <strong style="color:var(--color-accent)">Matellini · 2 min</strong>
+            <div class="hero-contenido">
+                <span class="insignia-hero">Plataforma para taxistas · Lima Sur</span>
+                <h1>Tu negocio de entregas, <span class="hero-resaltado">bajo control</span></h1>
+                <p>
+                    Recibe solicitudes en tiempo real, acepta con un toque,
+                    sigue cada etapa del viaje y lleva un historial completo de tus ganancias.
+                </p>
+                <div class="hero-botones">
+                    <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Comenzar gratis</a>
+                    <a href="modulos/autenticacion/login.html" class="boton-hero-secundario">Ya tengo cuenta</a>
+                </div>
+                <ul class="hero-confianza" aria-label="Indicadores de confianza">
+                    <li><span aria-hidden="true">✓</span> Registro gratuito</li>
+                    <li><span aria-hidden="true">✓</span> Flujo guiado</li>
+                    <li><span aria-hidden="true">✓</span> 100% responsive</li>
+                </ul>
             </div>
-        </div>
-    </section>
+            <div class="hero-visual">
+                <div class="mockup-app">
+                    <div class="mockup-app-bar">
+                        <span class="mockup-punto mockup-punto--rojo"></span>
+                        <span class="mockup-punto mockup-punto--ambar"></span>
+                        <span class="mockup-punto mockup-punto--verde"></span>
+                        <span class="mockup-app-titulo">Taxi Plaza</span>
+                    </div>
+                    <div class="mockup-app-cuerpo">
+                        <div class="mockup-alerta">
+                            <span class="mockup-alerta-icono" aria-hidden="true">🔔</span>
+                            <div>
+                                <strong>Nuevo servicio cerca</strong>
+                                <p>Matellini · 2 min · S/ 18.50</p>
+                            </div>
+                        </div>
+                        <div class="mockup-servicio">
+                            <div class="mockup-servicio-cabecera">
+                                <span class="mockup-etiqueta">Prioridad</span>
+                                <span class="mockup-tarifa">S/ 18.50</span>
+                            </div>
+                            <p class="mockup-ruta">📍 Plaza Vea Matellini → Av. Pachacútec 245</p>
+                            <p class="mockup-detalle">📦 Paquete mediano · 2.5 km · 12 min</p>
+                            <div class="mockup-progreso">
+                                <div class="mockup-progreso-relleno"></div>
+                            </div>
+                            <span class="mockup-etapa">Etapa: Recogida</span>
+                        </div>
+                        <div class="mockup-stats-mini">
+                            <div><strong>4</strong><span>Hoy</span></div>
+                            <div><strong>S/ 72</strong><span>Ganado</span></div>
+                            <div><strong>🟢</strong><span>Disponible</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tarjeta-hero-badge tarjeta-hero-badge--1" aria-hidden="true">
+                    <span>⚡</span> Tiempo real
+                </div>
+                <div class="tarjeta-hero-badge tarjeta-hero-badge--2" aria-hidden="true">
+                    <span>💰</span> +S/ 1,200 / sem
+                </div>
+            </div>
+        </section>
 
-    <section class="seccion-beneficios">
-        <h2>¿Por qué unirte a Taxi Plaza Lima Sur?</h2>
-        <div class="rejilla-beneficios row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
-            <div class="col">
-                <article class="tarjeta tarjeta-beneficio h-100">
-                    <span aria-hidden="true">📱</span>
-                    <h3>Solicitudes en tiempo real</h3>
-                    <p>Recibe alertas de servicios disponibles en tu zona al instante.</p>
-                </article>
+        <section class="seccion-estadisticas" aria-label="Estadísticas de la plataforma">
+            <div class="contenedor-estadisticas">
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="150">0</strong>
+                    <span>Taxistas activos</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="2400">0</strong>
+                    <span>Entregas completadas</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="98" data-sufijo="%">0</strong>
+                    <span>Satisfacción</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="12">0</strong>
+                    <span>Distritos cubiertos</span>
+                </div>
             </div>
-            <div class="col">
-                <article class="tarjeta tarjeta-beneficio h-100">
-                    <span aria-hidden="true">🗺️</span>
-                    <h3>Flujo guiado paso a paso</h3>
-                    <p>Desde la recogida hasta la entrega, cada etapa está claramente definida.</p>
-                </article>
-            </div>
-            <div class="col">
-                <article class="tarjeta tarjeta-beneficio h-100">
-                    <span aria-hidden="true">💰</span>
-                    <h3>Control de ganancias</h3>
-                    <p>Consulta tus ingresos diarios, semanales y el historial de pagos.</p>
-                </article>
-            </div>
-            <div class="col">
-                <article class="tarjeta tarjeta-beneficio h-100">
-                    <span aria-hidden="true">♿</span>
-                    <h3>Accesible para todos</h3>
-                    <p>Alto contraste, texto grande y diseño responsive para cualquier dispositivo.</p>
-                </article>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="seccion-cta">
-        <h2>¿Listo para empezar?</h2>
-        <p>Únete a la red de taxistas de Lima Sur y comienza a recibir servicios hoy.</p>
-        <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Registrarme como taxista</a>
-    </section>
+        <section class="seccion-pasos" aria-labelledby="titulo-pasos">
+            <h2 id="titulo-pasos">¿Cómo funciona?</h2>
+            <p class="seccion-subtitulo">Cuatro pasos simples para empezar a recibir servicios hoy mismo</p>
+            <ol class="rejilla-pasos">
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">1</span>
+                    <span class="paso-icono" aria-hidden="true">📝</span>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta con placa, DNI y datos de contacto en minutos.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">2</span>
+                    <span class="paso-icono" aria-hidden="true">📱</span>
+                    <h3>Recibe solicitudes</h3>
+                    <p>Alertas instantáneas de servicios disponibles en tu zona.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">3</span>
+                    <span class="paso-icono" aria-hidden="true">🗺️</span>
+                    <h3>Completa el flujo</h3>
+                    <p>Recogida, en curso y entrega con guía paso a paso.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">4</span>
+                    <span class="paso-icono" aria-hidden="true">💰</span>
+                    <h3>Cobra y crece</h3>
+                    <p>Consulta ganancias diarias, semanales y tu historial completo.</p>
+                </li>
+            </ol>
+        </section>
+
+        <section class="seccion-beneficios">
+            <h2>¿Por qué unirte a Taxi Plaza Lima Sur?</h2>
+            <p class="seccion-subtitulo seccion-subtitulo--claro">Herramientas pensadas para taxistas de la zona sur de Lima</p>
+            <div class="rejilla-beneficios row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">📱</span>
+                        <h3>Solicitudes en tiempo real</h3>
+                        <p>Recibe alertas de servicios disponibles en tu zona al instante.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">🗺️</span>
+                        <h3>Flujo guiado paso a paso</h3>
+                        <p>Desde la recogida hasta la entrega, cada etapa está claramente definida.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">💰</span>
+                        <h3>Control de ganancias</h3>
+                        <p>Consulta tus ingresos diarios, semanales y el historial de pagos.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">♿</span>
+                        <h3>Accesible para todos</h3>
+                        <p>Alto contraste, texto grande y diseño responsive para cualquier dispositivo.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="seccion-cobertura" aria-labelledby="titulo-cobertura">
+            <div class="cobertura-contenido">
+                <h2 id="titulo-cobertura">Cobertura en Lima Sur</h2>
+                <p>Operamos en los principales distritos de la zona sur metropolitana</p>
+                <ul class="lista-distritos">
+                    <li>Villa El Salvador</li>
+                    <li>Chorrillos</li>
+                    <li>San Juan de Miraflores</li>
+                    <li>Villa María del Triunfo</li>
+                    <li>Lurín</li>
+                    <li>Pachacamac</li>
+                    <li>Surco</li>
+                    <li>Matellini</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="seccion-cta">
+            <h2>¿Listo para empezar?</h2>
+            <p>Únete a la red de taxistas de Lima Sur y comienza a recibir servicios hoy.</p>
+            <div class="hero-botones hero-botones--centrado">
+                <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Registrarme como taxista</a>
+                <a href="modulos/autenticacion/login.html" class="boton-hero-secundario">Iniciar sesión</a>
+            </div>
+        </section>
     </main>
 
     <footer class="pie-sitio">

@@ -1,5 +1,15 @@
-/* Estilos específicos de la landing — sin reglas adicionales por ahora */
+/* Estilos específicos de la landing */
 .boton-nav-registro,
 #btn-ir-panel {
     color: #ffffff !important;
+}
+
+.seccion-cta .boton-hero-secundario {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.65);
+}
+
+.seccion-cta .boton-hero-secundario:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
 }

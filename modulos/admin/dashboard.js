@@ -147,7 +147,7 @@ function inicializarServicios() {
                 `).join('');
 
             tbody.querySelectorAll('[data-editar-servicio]').forEach((btn) => {
-                btn.addEventListener('click', () => editarServicio(servicios.find((s) => s.id === btn.dataset.editarServicio)));
+                btn.addEventListener('click', () => editarServicio(servicios.find((s) => String(s.id) === btn.dataset.editarServicio)));
             });
             tbody.querySelectorAll('[data-eliminar-servicio]').forEach((btn) => {
                 btn.addEventListener('click', () => eliminarServicio(btn.dataset.eliminarServicio));
@@ -276,7 +276,7 @@ function inicializarTaxistas() {
                 `).join('');
 
             tbody.querySelectorAll('[data-editar-taxista]').forEach((btn) => {
-                btn.addEventListener('click', () => editarTaxista(taxistas.find((t) => t.id === btn.dataset.editarTaxista)));
+                btn.addEventListener('click', () => editarTaxista(taxistas.find((t) => String(t.id) === btn.dataset.editarTaxista)));
             });
             tbody.querySelectorAll('[data-eliminar-taxista]').forEach((btn) => {
                 btn.addEventListener('click', () => eliminarTaxista(btn.dataset.eliminarTaxista));

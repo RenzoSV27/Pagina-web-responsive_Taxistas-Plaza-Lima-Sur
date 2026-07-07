@@ -132,7 +132,10 @@ const LayoutPublico = {
         const btnPanel = document.getElementById('btn-ir-panel');
         const itemPanel = document.getElementById('item-ir-panel');
         if (sesion) {
-            if (btnPanel) btnPanel.hidden = false;
+            if (btnPanel) {
+                btnPanel.href = ServicioAutenticacion.obtenerRutaPanel();
+                btnPanel.hidden = false;
+            }
             if (itemPanel) itemPanel.hidden = false;
         }
     }

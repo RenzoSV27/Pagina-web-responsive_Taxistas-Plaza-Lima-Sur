@@ -354,6 +354,42 @@
     z-index: 0;
 }
 
+.hero-patron {
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
+}
+
+.hero-resaltado {
+    color: var(--color-accent);
+}
+
+.hero-confianza {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.5rem;
+    list-style: none;
+    margin-top: 1.75rem;
+    padding: 0;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-confianza li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.hero-confianza span {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
 .hero-contenido,
 .hero-visual {
     position: relative;
@@ -404,6 +440,14 @@
     cursor: pointer;
     text-decoration: none;
     box-shadow: var(--shadow-md);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.boton-hero-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+    color: var(--color-primary-dark);
 }
 
 .boton-hero-secundario {
@@ -416,22 +460,386 @@
     font-family: inherit;
     cursor: pointer;
     text-decoration: none;
+    transition: background var(--transition), border-color var(--transition);
 }
 
-.tarjeta-hero-flotante {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+.boton-hero-secundario:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    color: white;
+}
+
+.hero-botones--centrado {
+    justify-content: center;
+}
+
+/* Mockup app en hero */
+
+.hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mockup-app {
+    width: min(100%, 340px);
+    background: rgba(255, 255, 255, 0.97);
     border-radius: var(--radius-lg);
-    padding: clamp(1.25rem, 4vw, 2rem) clamp(1.5rem, 5vw, 2.5rem);
+    overflow: hidden;
+    box-shadow: 0 32px 64px rgba(0, 0, 0, 0.25);
+    color: var(--color-text);
+}
+
+.mockup-app-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-navy);
+    color: white;
+}
+
+.mockup-punto {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.mockup-punto--rojo { background: #ef4444; }
+.mockup-punto--ambar { background: var(--color-accent); }
+.mockup-punto--verde { background: var(--color-success); }
+
+.mockup-app-titulo {
+    margin-left: auto;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.mockup-app-cuerpo {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mockup-alerta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: var(--radius-sm);
+    animation: pulso-alerta 2.5s ease-in-out infinite;
+}
+
+.mockup-alerta-icono {
+    font-size: 1.25rem;
+}
+
+.mockup-alerta strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--color-navy);
+}
+
+.mockup-alerta p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+@keyframes pulso-alerta {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+}
+
+.mockup-servicio {
+    padding: 0.875rem;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+}
+
+.mockup-servicio-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.mockup-etiqueta {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: rgba(245, 158, 11, 0.15);
+    color: #b45309;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.mockup-tarifa {
+    font-weight: 800;
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+
+.mockup-ruta,
+.mockup-detalle {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    margin: 0.25rem 0;
+    line-height: 1.4;
+}
+
+.mockup-progreso {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 999px;
+    margin: 0.75rem 0 0.4rem;
+    overflow: hidden;
+}
+
+.mockup-progreso-relleno {
+    height: 100%;
+    width: 42%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: 999px;
+    animation: progreso-mockup 3s ease-in-out infinite alternate;
+}
+
+@keyframes progreso-mockup {
+    from { width: 35%; }
+    to { width: 55%; }
+}
+
+.mockup-etapa {
+    font-size: 0.7rem;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.mockup-stats-mini {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
     text-align: center;
-    max-width: 100%;
+}
+
+.mockup-stats-mini div {
+    padding: 0.5rem;
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+}
+
+.mockup-stats-mini strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--color-navy);
+}
+
+.mockup-stats-mini span {
+    font-size: 0.65rem;
+    color: var(--color-text-muted);
+}
+
+.tarjeta-hero-badge {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--color-navy);
+    padding: 0.5rem 0.875rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
     animation: flotar 4s ease-in-out infinite;
+}
+
+.tarjeta-hero-badge--1 {
+    top: -8%;
+    right: -4%;
+    animation-delay: 0s;
+}
+
+.tarjeta-hero-badge--2 {
+    bottom: 8%;
+    left: -6%;
+    animation-delay: 1.5s;
+}
+
+.tarjeta-hero-badge span {
+    margin-right: 0.25rem;
 }
 
 @keyframes flotar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
+}
+
+/* Estadísticas landing */
+
+.seccion-estadisticas {
+    background: var(--color-navy);
+    color: white;
+    padding: 2.5rem clamp(1rem, 4vw, 2rem);
+}
+
+.contenedor-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+    gap: 1.5rem;
+    max-width: var(--container);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.stat-item strong {
+    display: block;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1.1;
+}
+
+.stat-item span {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+/* Pasos */
+
+.seccion-pasos {
+    padding: 4rem clamp(1rem, 4vw, 2rem);
+    background: var(--color-bg);
+    text-align: center;
+}
+
+.seccion-pasos h2,
+.seccion-beneficios h2,
+.seccion-cobertura h2 {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-navy);
+    margin-bottom: 0.5rem;
+}
+
+.seccion-subtitulo {
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.seccion-subtitulo--claro {
+    text-align: center;
+}
+
+.rejilla-pasos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+    gap: 1.25rem;
+    max-width: var(--container);
+    margin: 0 auto;
+    list-style: none;
+    padding: 0;
+    counter-reset: paso;
+}
+
+.tarjeta-paso {
+    position: relative;
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.25rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid transparent;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.tarjeta-paso:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(245, 158, 11, 0.35);
+}
+
+.paso-numero {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paso-icono {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.tarjeta-paso h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary-dark);
+    margin-bottom: 0.4rem;
+}
+
+.tarjeta-paso p {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Cobertura */
+
+.seccion-cobertura {
+    padding: 3.5rem clamp(1rem, 4vw, 2rem);
+    background: linear-gradient(135deg, rgba(29, 78, 216, 0.06), rgba(245, 158, 11, 0.06));
+    text-align: center;
+}
+
+.cobertura-contenido {
+    max-width: var(--container);
+    margin: 0 auto;
+}
+
+.cobertura-contenido > p {
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.lista-distritos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-distritos li {
+    background: white;
+    color: var(--color-primary-dark);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(29, 78, 216, 0.2);
+    box-shadow: var(--shadow-sm);
 }
 
 .seccion-beneficios {
@@ -443,7 +851,7 @@
     text-align: center;
     font-size: 1.75rem;
     font-weight: 800;
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.5rem;
     color: var(--color-navy);
 }
 
@@ -458,9 +866,18 @@
 .tarjeta-beneficio {
     text-align: center;
     padding: 2rem 1.5rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+    border-top: 3px solid transparent;
 }
 
-.tarjeta-beneficio span {
+.tarjeta-beneficio:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-top-color: var(--color-accent);
+}
+
+.beneficio-icono,
+.tarjeta-beneficio span.beneficio-icono {
     font-size: 2.5rem;
     display: block;
     margin-bottom: 1rem;
@@ -480,7 +897,9 @@
 .seccion-cta {
     padding: 4rem clamp(1rem, 4vw, 2rem);
     text-align: center;
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    background:
+        radial-gradient(ellipse 60% 80% at 50% 120%, rgba(245, 158, 11, 0.18), transparent),
+        linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
     color: white;
 }
 
@@ -507,8 +926,23 @@
         margin-right: auto;
     }
 
-    .hero-botones {
+    .hero-botones,
+    .hero-confianza {
         justify-content: center;
+    }
+
+    .hero-visual {
+        margin-top: 1rem;
+    }
+
+    .tarjeta-hero-badge--1 {
+        top: -4%;
+        right: 2%;
+    }
+
+    .tarjeta-hero-badge--2 {
+        bottom: 4%;
+        left: 2%;
     }
 }
 

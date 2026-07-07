@@ -30,17 +30,22 @@ const Animaciones = {
 
         const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-        tl.from('.barra-navegacion', { y: -20, opacity: 0, duration: 0.5 })
-            .from('.hero-contenido > *', { y: 40, opacity: 0, duration: 0.7, stagger: 0.12 }, '-=0.2')
-            .from('.tarjeta-hero-flotante', { scale: 0.85, opacity: 0, duration: 0.8, ease: 'back.out(1.4)' }, '-=0.5')
-            .from('.seccion-beneficios h2', { y: 30, opacity: 0, duration: 0.5 }, '-=0.2')
-            .from('.tarjeta-beneficio', { y: 36, opacity: 0, duration: 0.55, stagger: 0.1 }, '-=0.25')
+        tl.from('.navbar-taxi', { y: -20, opacity: 0, duration: 0.5 })
+            .from('.hero-contenido > *', { y: 40, opacity: 0, duration: 0.7, stagger: 0.1 }, '-=0.2')
+            .from('.mockup-app', { scale: 0.88, opacity: 0, duration: 0.85, ease: 'back.out(1.3)' }, '-=0.45')
+            .from('.tarjeta-hero-badge', { scale: 0.7, opacity: 0, duration: 0.5, stagger: 0.12 }, '-=0.4')
+            .from('.stat-item', { y: 24, opacity: 0, duration: 0.45, stagger: 0.08 }, '-=0.2')
+            .from('.seccion-pasos h2, .seccion-pasos .seccion-subtitulo', { y: 24, opacity: 0, duration: 0.45, stagger: 0.08 }, '-=0.15')
+            .from('.tarjeta-paso', { y: 32, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.2')
+            .from('.seccion-beneficios h2, .seccion-beneficios .seccion-subtitulo', { y: 24, opacity: 0, duration: 0.45, stagger: 0.08 }, '-=0.15')
+            .from('.tarjeta-beneficio', { y: 36, opacity: 0, duration: 0.55, stagger: 0.1 }, '-=0.2')
+            .from('.seccion-cobertura > *', { y: 28, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.15')
             .from('.seccion-cta > *', { y: 28, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.15')
             .from('.pie-sitio', { opacity: 0, duration: 0.4 }, '-=0.1');
 
-        gsap.to('.tarjeta-hero-flotante', {
-            y: -10,
-            duration: 2.4,
+        gsap.to('.mockup-app', {
+            y: -8,
+            duration: 3,
             ease: 'sine.inOut',
             yoyo: true,
             repeat: -1
