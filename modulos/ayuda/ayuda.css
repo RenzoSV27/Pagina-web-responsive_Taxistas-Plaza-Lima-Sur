@@ -1,0 +1,32 @@
+/* Centro de ayuda — estilos específicos mínimos */
+
+/* Soporte y contacto — estilos específicos mínimos */
+.titulo-seccion-soporte {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-navy);
+}
+
+.soporte-grid {
+    align-items: start;
+}
+
+.lista-contacto a {
+    font-weight: 600;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}

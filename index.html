@@ -4,242 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/js/nucleo/tema-anticipado.js"></script>
     <title>Taxi Plaza Lima Sur</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/bootstrap-custom.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/componentes.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/accesibilidad.css">
     <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
+<body data-ruta-raiz="">
 
-    <header class="navbar">
-        <div class="logo">
-            <span class="logo-icon" aria-hidden="true">🚖</span>
-            <span class="logo-text">Taxi Plaza <strong>Lima Sur</strong></span>
-        </div>
-
-        <div class="nav-buttons">
-            <button type="button" class="btn-login">Iniciar sesión</button>
-            <button type="button" class="btn-register">Registrarse</button>
-        </div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-taxi sticky-top" aria-label="Navegación principal">
+            <div class="container-fluid">
+                <a class="navbar-brand logo" href="index.html">
+                    <span class="logo-icono" aria-hidden="true">🚖</span>
+                    <span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menu-publico" aria-controls="menu-publico"
+                    aria-expanded="false" aria-label="Abrir menú de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="menu-publico">
+                    <ul class="navbar-nav nav-botones gap-2 align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link boton-nav-login" href="modulos/autenticacion/login.html">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link boton-nav-registro btn btn-taxi-primary px-3" href="modulos/autenticacion/registro.html">Registrarse</a>
+                        </li>
+                        <li class="nav-item" id="item-ir-panel" hidden>
+                            <a class="nav-link boton-nav-registro btn btn-taxi-outline px-3" href="modulos/panel/dashboard.html" id="btn-ir-panel">Ir al panel</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-bg" aria-hidden="true"></div>
-
-        <div class="hero-text">
-            <span class="hero-badge">Panel del conductor</span>
-            <h1>Gestiona tus servicios de taxi de forma rápida y segura</h1>
-            <p>
-                Recibe solicitudes de entrega, acepta servicios con un solo toque
-                y mantén un historial completo de tus viajes.
-            </p>
-            <button type="button" class="btn-primary">Ver solicitudes</button>
-        </div>
-
-        <div class="hero-visual" aria-hidden="true">
-            <div class="hero-card-float">
-                <span class="hero-emoji">🚕</span>
-                <p>Nuevo servicio cerca</p>
-                <strong>Matellini · 2 min</strong>
+    <main id="contenido-principal">
+        <section class="seccion-hero">
+            <div class="hero-fondo" aria-hidden="true">
+                <div class="hero-patron"></div>
             </div>
-        </div>
-    </section>
-
-    <section class="dashboard" aria-label="Resumen del día">
-        <div class="card stats stats--blue">
-            <span class="stats-icon" aria-hidden="true">📋</span>
-            <h3>Servicios hoy</h3>
-            <span class="stats-value">12</span>
-        </div>
-
-        <div class="card stats stats--green">
-            <span class="stats-icon" aria-hidden="true">✅</span>
-            <h3>Completados</h3>
-            <span class="stats-value">9</span>
-        </div>
-
-        <div class="card stats stats--amber">
-            <span class="stats-icon" aria-hidden="true">💰</span>
-            <h3>Ganancias</h3>
-            <span class="stats-value">S/ 145</span>
-        </div>
-
-        <div class="card stats stats--status">
-            <span class="stats-icon" aria-hidden="true">🟢</span>
-            <h3>Estado</h3>
-            <span class="stats-value stats-value--badge">Disponible</span>
-        </div>
-    </section>
-
-    <main>
-
-        <section class="solicitudes">
-            <header class="section-header">
-                <h2>Solicitudes disponibles</h2>
-                <p>3 servicios pendientes en tu zona</p>
-            </header>
-
-            <div class="cards-grid">
-                <article class="request-card">
-                    <div class="request-card-top">
-                        <h3>Ripley</h3>
-                        <span class="request-tag">Entrega</span>
+            <div class="hero-contenido">
+                <span class="insignia-hero">Plataforma para taxistas · Lima Sur</span>
+                <h1>Tu negocio de entregas, <span class="hero-resaltado">bajo control</span></h1>
+                <p>
+                    Recibe solicitudes en tiempo real, acepta con un toque,
+                    sigue cada etapa del viaje y lleva un historial completo de tus ganancias.
+                </p>
+                <div class="hero-botones">
+                    <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Comenzar gratis</a>
+                    <a href="modulos/autenticacion/login.html" class="boton-hero-secundario">Ya tengo cuenta</a>
+                </div>
+                <ul class="hero-confianza" aria-label="Indicadores de confianza">
+                    <li><span aria-hidden="true">✓</span> Registro gratuito</li>
+                    <li><span aria-hidden="true">✓</span> Flujo guiado</li>
+                    <li><span aria-hidden="true">✓</span> 100% responsive</li>
+                </ul>
+            </div>
+            <div class="hero-visual">
+                <div class="mockup-app">
+                    <div class="mockup-app-bar">
+                        <span class="mockup-punto mockup-punto--rojo"></span>
+                        <span class="mockup-punto mockup-punto--ambar"></span>
+                        <span class="mockup-punto mockup-punto--verde"></span>
+                        <span class="mockup-app-titulo">Taxi Plaza</span>
                     </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Matellini - Chorrillos</li>
-                        <li><span aria-hidden="true">📦</span> Televisor 55"</li>
-                    </ul>
-                    <div class="price">S/ 15.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
-
-                <article class="request-card request-card--featured">
-                    <div class="request-card-top">
-                        <h3>Saga Falabella</h3>
-                        <span class="request-tag request-tag--hot">Prioridad</span>
+                    <div class="mockup-app-cuerpo">
+                        <div class="mockup-alerta">
+                            <span class="mockup-alerta-icono" aria-hidden="true">🔔</span>
+                            <div>
+                                <strong>Nuevo servicio cerca</strong>
+                                <p>Matellini · 2 min · S/ 18.50</p>
+                            </div>
+                        </div>
+                        <div class="mockup-servicio">
+                            <div class="mockup-servicio-cabecera">
+                                <span class="mockup-etiqueta">Prioridad</span>
+                                <span class="mockup-tarifa">S/ 18.50</span>
+                            </div>
+                            <p class="mockup-ruta">📍 Plaza Vea Matellini → Av. Pachacútec 245</p>
+                            <p class="mockup-detalle">📦 Paquete mediano · 2.5 km · 12 min</p>
+                            <div class="mockup-progreso">
+                                <div class="mockup-progreso-relleno"></div>
+                            </div>
+                            <span class="mockup-etapa">Etapa: Recogida</span>
+                        </div>
+                        <div class="mockup-stats-mini">
+                            <div><strong>4</strong><span>Hoy</span></div>
+                            <div><strong>S/ 72</strong><span>Ganado</span></div>
+                            <div><strong>🟢</strong><span>Disponible</span></div>
+                        </div>
                     </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Surco</li>
-                        <li><span aria-hidden="true">📦</span> Horno microondas</li>
-                    </ul>
-                    <div class="price">S/ 18.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
-
-                <article class="request-card">
-                    <div class="request-card-top">
-                        <h3>Promart</h3>
-                        <span class="request-tag">Entrega</span>
-                    </div>
-                    <ul class="request-meta">
-                        <li><span aria-hidden="true">📍</span> Barranco</li>
-                        <li><span aria-hidden="true">📦</span> Herramientas</li>
-                    </ul>
-                    <div class="price">S/ 20.00</div>
-                    <button type="button" class="btn-accept">Aceptar servicio</button>
-                </article>
+                </div>
+                <div class="tarjeta-hero-badge tarjeta-hero-badge--1" aria-hidden="true">
+                    <span>⚡</span> Tiempo real
+                </div>
+                <div class="tarjeta-hero-badge tarjeta-hero-badge--2" aria-hidden="true">
+                    <span>💰</span> +S/ 1,200 / sem
+                </div>
             </div>
         </section>
 
-        <section class="acciones">
-            <header class="section-header">
-                <h2>Acciones del servicio</h2>
-                <p>Disponibles al aceptar un viaje</p>
-            </header>
-
-            <div class="actions-grid">
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">📍</span>
-                    <span>Cómo llegar</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">📦</span>
-                    <span>Confirmar recogida</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">✅</span>
-                    <span>Confirmar entrega</span>
-                </button>
-                <button type="button" class="action-btn" disabled>
-                    <span class="action-icon" aria-hidden="true">🌙</span>
-                    <span>Modo alto contraste</span>
-                </button>
+        <section class="seccion-estadisticas" aria-label="Estadísticas de la plataforma">
+            <div class="contenedor-estadisticas">
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="150">0</strong>
+                    <span>Taxistas activos</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="2400">0</strong>
+                    <span>Entregas completadas</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="98" data-sufijo="%">0</strong>
+                    <span>Satisfacción</span>
+                </div>
+                <div class="stat-item">
+                    <strong class="stat-numero" data-objetivo="12">0</strong>
+                    <span>Distritos cubiertos</span>
+                </div>
             </div>
         </section>
 
-        <section class="historial">
-            <header class="section-header">
-                <h2>Historial de servicios</h2>
-                <p>Últimos viajes registrados</p>
-            </header>
+        <section class="seccion-pasos" aria-labelledby="titulo-pasos">
+            <h2 id="titulo-pasos">¿Cómo funciona?</h2>
+            <p class="seccion-subtitulo">Cuatro pasos simples para empezar a recibir servicios hoy mismo</p>
+            <ol class="rejilla-pasos">
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">1</span>
+                    <span class="paso-icono" aria-hidden="true">📝</span>
+                    <h3>Regístrate</h3>
+                    <p>Crea tu cuenta con placa, DNI y datos de contacto en minutos.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">2</span>
+                    <span class="paso-icono" aria-hidden="true">📱</span>
+                    <h3>Recibe solicitudes</h3>
+                    <p>Alertas instantáneas de servicios disponibles en tu zona.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">3</span>
+                    <span class="paso-icono" aria-hidden="true">🗺️</span>
+                    <h3>Completa el flujo</h3>
+                    <p>Recogida, en curso y entrega con guía paso a paso.</p>
+                </li>
+                <li class="tarjeta-paso">
+                    <span class="paso-numero">4</span>
+                    <span class="paso-icono" aria-hidden="true">💰</span>
+                    <h3>Cobra y crece</h3>
+                    <p>Consulta ganancias diarias, semanales y tu historial completo.</p>
+                </li>
+            </ol>
+        </section>
 
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Fecha</th>
-                            <th>Destino</th>
-                            <th>Tarifa</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="Fecha">02/06/2026</td>
-                            <td data-label="Destino">Surco</td>
-                            <td data-label="Tarifa">S/ 18</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Fecha">01/06/2026</td>
-                            <td data-label="Destino">Barranco</td>
-                            <td data-label="Tarifa">S/ 20</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                        <tr>
-                            <td data-label="Fecha">31/05/2026</td>
-                            <td data-label="Destino">Chorrillos</td>
-                            <td data-label="Tarifa">S/ 15</td>
-                            <td data-label="Estado"><span class="status-pill">Completado</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section class="seccion-beneficios">
+            <h2>¿Por qué unirte a Taxi Plaza Lima Sur?</h2>
+            <p class="seccion-subtitulo seccion-subtitulo--claro">Herramientas pensadas para taxistas de la zona sur de Lima</p>
+            <div class="rejilla-beneficios row row-cols-1 row-cols-md-2 row-cols-xl-4 g-4">
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">📱</span>
+                        <h3>Solicitudes en tiempo real</h3>
+                        <p>Recibe alertas de servicios disponibles en tu zona al instante.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">🗺️</span>
+                        <h3>Flujo guiado paso a paso</h3>
+                        <p>Desde la recogida hasta la entrega, cada etapa está claramente definida.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">💰</span>
+                        <h3>Control de ganancias</h3>
+                        <p>Consulta tus ingresos diarios, semanales y el historial de pagos.</p>
+                    </article>
+                </div>
+                <div class="col">
+                    <article class="tarjeta tarjeta-beneficio h-100">
+                        <span class="beneficio-icono" aria-hidden="true">♿</span>
+                        <h3>Accesible para todos</h3>
+                        <p>Alto contraste, texto grande y diseño responsive para cualquier dispositivo.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
+        <section class="seccion-cobertura" aria-labelledby="titulo-cobertura">
+            <div class="cobertura-contenido">
+                <h2 id="titulo-cobertura">Cobertura en Lima Sur</h2>
+                <p>Operamos en los principales distritos de la zona sur metropolitana</p>
+                <ul class="lista-distritos">
+                    <li>Villa El Salvador</li>
+                    <li>Chorrillos</li>
+                    <li>San Juan de Miraflores</li>
+                    <li>Villa María del Triunfo</li>
+                    <li>Lurín</li>
+                    <li>Pachacamac</li>
+                    <li>Surco</li>
+                    <li>Matellini</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="seccion-cta">
+            <h2>¿Listo para empezar?</h2>
+            <p>Únete a la red de taxistas de Lima Sur y comienza a recibir servicios hoy.</p>
+            <div class="hero-botones hero-botones--centrado">
+                <a href="modulos/autenticacion/registro.html" class="boton-hero-primario">Registrarme como taxista</a>
+                <a href="modulos/autenticacion/login.html" class="boton-hero-secundario">Iniciar sesión</a>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="pie-sitio">
         <p>© 2026 Taxi Plaza Lima Sur · Prototipo IHC</p>
+        <p>
+            <a href="modulos/legal/terminos.html">Términos</a>
+            <a href="modulos/legal/privacidad.html">Privacidad</a>
+            <a href="modulos/ayuda/centro-ayuda.html">Ayuda</a>
+            <a href="modulos/ayuda/soporte.html">Soporte</a>
+        </p>
     </footer>
 
-    <div class="accessibility-container">
-        <button
-            type="button"
-            class="accessibility-btn"
-            aria-label="Opciones de accesibilidad"
-            aria-expanded="false"
-            aria-controls="panel-accesibilidad">
-            ♿
-        </button>
-
-        <div
-            id="panel-accesibilidad"
-            class="accessibility-panel"
-            role="region"
-            aria-label="Panel de accesibilidad"
-            hidden>
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
             <h3>Accesibilidad</h3>
-
-            <label>
-                <input type="checkbox" id="alto-contraste">
-                Alto contraste
-            </label>
-            <label>
-                <input type="checkbox" id="texto-grande">
-                Texto grande
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Compatibilidad con lector de pantalla
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Navegación por voz
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Vibración para notificaciones
-            </label>
-            <label>
-                <input type="checkbox" disabled>
-                Reducir animaciones
-            </label>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="assets/js/nucleo/config-api.js"></script>
+    <script src="assets/js/nucleo/almacenamiento.js"></script>
+    <script src="assets/js/nucleo/api-cliente.js"></script>
+    <script src="assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="assets/js/nucleo/layout-app.js"></script>
+    <script src="assets/js/nucleo/accesibilidad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/js/nucleo/bootstrap-init.js"></script>
+    <script src="assets/js/nucleo/animaciones.js"></script>
     <script src="index.js"></script>
 </body>
 

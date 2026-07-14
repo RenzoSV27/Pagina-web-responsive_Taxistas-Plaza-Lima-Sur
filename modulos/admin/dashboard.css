@@ -1,0 +1,183 @@
+.admin-layout {
+    min-height: 100vh;
+    background: var(--color-fondo, #f4f6f9);
+}
+
+.admin-cabecera {
+    background: #1a2332;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-cabecera h1 {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.admin-cabecera .badge-rol {
+    background: #ffc107;
+    color: #1a2332;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.admin-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.admin-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.tarjeta-resumen {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.tarjeta-resumen strong {
+    display: block;
+    font-size: 1.5rem;
+    color: #1a2332;
+}
+
+.tarjeta-resumen span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.admin-tabs button {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.admin-tabs button.activo {
+    background: #1a2332;
+    color: #fff;
+    border-color: #1a2332;
+}
+
+.admin-panel {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.admin-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.tabla-admin {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.tabla-admin th {
+    font-weight: 600;
+    color: #444;
+}
+
+.estado-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.estado-disponible { background: #d4edda; color: #155724; }
+.estado-asignado, .estado-ocupado { background: #fff3cd; color: #856404; }
+.estado-completado { background: #cce5ff; color: #004085; }
+.estado-cancelado, .estado-inactivo { background: #f8d7da; color: #721c24; }
+
+.btn-accion {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.85rem;
+}
+
+.btn-accion--editar { color: #0d6efd; }
+.btn-accion--eliminar { color: #dc3545; }
+.btn-accion--cancelar { color: #fd7e14; }
+
+.formulario-admin {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.formulario-admin label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+}
+
+.formulario-admin input,
+.formulario-admin select,
+.formulario-admin textarea {
+    padding: 0.4rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.formulario-admin .campo-ancho {
+    grid-column: 1 / -1;
+}
+
+.mensaje-admin {
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.mensaje-admin--exito { background: #d4edda; color: #155724; }
+.mensaje-admin--error { background: #f8d7da; color: #721c24; }
+
+@media (max-width: 768px) {
+    .tabla-admin { font-size: 0.8rem; }
+    .tabla-admin th:nth-child(n+4),
+    .tabla-admin td:nth-child(n+4) { display: none; }
+}

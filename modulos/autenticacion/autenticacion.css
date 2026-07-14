@@ -1,0 +1,36 @@
+.credenciales-demo {
+    font-size: 0.85rem;
+    background: #f0f7ff;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.25rem;
+    color: var(--color-primary-dark);
+}
+
+.tarjeta-auth--ancho {
+    width: min(520px, 100%);
+}
+
+.grupo-campo label input[type="checkbox"] {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.grupo-campo label {
+    flex-direction: row;
+    align-items: center;
+    font-weight: 500;
+}
+
+.campo-check {
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.5;
+}
+
+.input-error {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12) !important;
+}
+
+/* Estilos específicos de recuperar contraseña */

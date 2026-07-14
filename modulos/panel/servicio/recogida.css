@@ -1,0 +1,16 @@
+/* Estilos específicos del punto de recogida */
+
+.direccion-recogida {
+    margin-top: 1.5rem;
+}
+
+.direccion-destacada {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary-dark);
+    margin: 0.75rem 0 1rem;
+}
+
+.mapa-placeholder {
+    margin-bottom: 0;
+}

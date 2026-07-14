@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../../../assets/js/nucleo/tema-anticipado.js"></script>
+    <title>Confirmación de entrega - Taxi Plaza Lima Sur</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../assets/css/bootstrap-custom.css">
+
+    <link rel="stylesheet" href="../../../assets/css/base.css">
+    <link rel="stylesheet" href="../../../assets/css/componentes.css">
+    <link rel="stylesheet" href="../../../assets/css/layout.css">
+    <link rel="stylesheet" href="../../../assets/css/accesibilidad.css">
+    <link rel="stylesheet" href="confirmacion-entrega.css">
+</head>
+
+<body data-ruta-raiz="../../../">
+
+    <div class="layout-app">
+        <aside class="sidebar offcanvas offcanvas-start" id="sidebar" tabindex="-1"
+            aria-label="Menú principal del panel">
+            <div class="offcanvas-header d-lg-none">
+                <h2 class="offcanvas-title h6 mb-0" id="sidebarLabel">Menú</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar menú"></button>
+            </div>
+            <div class="offcanvas-body p-0 d-flex flex-column">
+            <div class="sidebar-cabecera"><a href="../../../index.html" class="logo"><span class="logo-icono" aria-hidden="true">🚖</span><span class="logo-texto">Taxi Plaza <strong>Lima Sur</strong></span></a></div>
+            <div class="sidebar-usuario">Taxista<strong id="nombre-usuario">—</strong></div>
+            <nav class="sidebar-nav" id="sidebar-nav" aria-label="Secciones del panel"></nav>
+            </div>
+        </aside>
+        <div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+        <div class="contenido-app">
+            <header class="barra-app">
+                <button type="button" class="boton-menu-movil btn btn-link" id="btn-menu-movil"
+                    data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar"
+                    aria-label="Abrir menú de navegación">☰</button>
+                <span class="barra-app-titulo">Confirmación de entrega</span>
+            </header>
+            <main class="pagina-app" id="contenido-principal">
+                <div class="encabezado-seccion">
+                    <h1>Confirmar entrega</h1>
+                    <p id="resumen-entrega"></p>
+                </div>
+                <div id="barra-progreso-servicio" hidden></div>
+                <div class="tarjeta">
+                    <form id="formulario-entrega" class="formulario">
+                        <div class="grupo-campo">
+                            <label for="codigo-entrega">Código de entrega (opcional)</label>
+                            <input type="text" id="codigo-entrega" name="codigo" placeholder="Ej: 1234" autocomplete="off">
+                        </div>
+                        <label class="grupo-campo grupo-checkbox">
+                            <input type="checkbox" id="confirmar-entrega" required>
+                            Confirmo que entregué el producto al cliente
+                        </label>
+                        <p id="mensaje-entrega" class="mensaje-formulario" hidden></p>
+                        <button type="submit" class="boton-primario boton-primario--ancho" id="btn-finalizar" disabled>Finalizar servicio</button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="contenedor-accesibilidad">
+        <button type="button" class="boton-accesibilidad" aria-label="Opciones de accesibilidad"
+            aria-expanded="false" aria-controls="panel-accesibilidad">♿</button>
+        <div id="panel-accesibilidad" class="panel-accesibilidad" role="region"
+            aria-label="Panel de accesibilidad" hidden>
+            <h3>Accesibilidad</h3>
+            <label><input type="checkbox" id="alto-contraste"> Alto contraste</label>
+            <label><input type="checkbox" id="texto-grande"> Texto grande</label>
+        </div>
+    </div>
+
+    <script src="../../../assets/js/nucleo/config-api.js"></script>
+    <script src="../../../assets/js/nucleo/almacenamiento.js"></script>
+    <script src="../../../assets/js/nucleo/api-cliente.js"></script>
+    <script src="../../../assets/js/nucleo/navegacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-autenticacion.js"></script>
+    <script src="../../../assets/js/servicios/servicio-servicios.js"></script>
+    <script src="../../../assets/js/servicios/servicio-notificaciones.js"></script>
+    <script src="../../../assets/js/servicios/servicio-perfil.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="../../../assets/js/nucleo/animaciones.js"></script>
+<script src="../../../assets/js/nucleo/layout-app.js"></script>
+    <script src="../../../assets/js/nucleo/accesibilidad.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="../../../assets/js/nucleo/bootstrap-init.js"></script>
+    <script src="confirmacion-entrega.js"></script>
+</body>
+
+</html>

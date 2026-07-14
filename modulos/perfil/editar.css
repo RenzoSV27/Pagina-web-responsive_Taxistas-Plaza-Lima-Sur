@@ -1,0 +1,5 @@
+/* Editar perfil — estilos específicos mínimos */
+.tarjeta-formulario {
+    max-width: min(520px, 100%);
+    width: 100%;
+}

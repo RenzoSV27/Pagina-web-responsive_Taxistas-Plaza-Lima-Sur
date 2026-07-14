@@ -1,0 +1,14 @@
+/* Perfil taxista — estilos específicos mínimos */
+.perfil-estadisticas {
+    margin-bottom: 1.5rem;
+}
+
+.perfil-datos {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .perfil-estadisticas {
+        grid-template-columns: 1fr;
+    }
+}
